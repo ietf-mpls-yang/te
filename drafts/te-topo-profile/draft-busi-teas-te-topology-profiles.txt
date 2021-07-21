@@ -5,7 +5,7 @@
 TEAS Working Group                                               I. Busi
 Internet-Draft                                                    Huawei
 Intended status: Informational                                    X. Liu
-Expires: 13 January 2022                                  Volta Networks
+Expires: 22 January 2022                                  Volta Networks
                                                               I. Bryskin
                                                               Individual
                                                                V. Beeram
@@ -13,11 +13,12 @@ Expires: 13 January 2022                                  Volta Networks
                                                         Juniper Networks
                                                      O. Gonzalez de Dios
                                                               Telefonica
-                                                            12 July 2021
+                                                            21 July 2021
 
 
-       Profiles for Traffic Engineering (TE) Topology Data Model
-                draft-busi-teas-te-topology-profiles-02
+     Profiles for Traffic Engineering (TE) Topology Data Model and
+                   Applicability to non-TE Use Cases
+                draft-busi-teas-te-topology-profiles-03
 
 Abstract
 
@@ -40,24 +41,26 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 13 January 2022.
+   This Internet-Draft will expire on 22 January 2022.
 
 Copyright Notice
 
    Copyright (c) 2021 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
-   This document is subject to BCP 78 and the IETF Trust's Legal
-   Provisions Relating to IETF Documents (https://trustee.ietf.org/
-   license-info) in effect on the date of publication of this document.
 
 
 
-Busi, et al.             Expires 13 January 2022                [Page 1]
+
+
+Busi, et al.             Expires 22 January 2022                [Page 1]
 
 Internet-Draft            TE Topology Profiles                 July 2021
 
 
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents (https://trustee.ietf.org/
+   license-info) in effect on the date of publication of this document.
    Please review these documents carefully, as they describe your rights
    and restrictions with respect to this document.  Code Components
    extracted from this document must include Simplified BSD License text
@@ -74,16 +77,17 @@ Table of Contents
      2.4.  Overlay and Underlay non-TE Topologies  . . . . . . . . .   7
      2.5.  Nodes with switching limitations  . . . . . . . . . . . .   8
    3.  Technology-specific augmentations . . . . . . . . . . . . . .   9
-     3.1.  Multi-inheritance . . . . . . . . . . . . . . . . . . . .  11
-     3.2.  Example (Link augmentation) . . . . . . . . . . . . . . .  12
-   4.  Implemented profiles  . . . . . . . . . . . . . . . . . . . .  13
-   5.  Security Considerations . . . . . . . . . . . . . . . . . . .  14
-   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  14
-   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  14
-     7.1.  Normative References  . . . . . . . . . . . . . . . . . .  14
-     7.2.  Informative References  . . . . . . . . . . . . . . . . .  14
-   Contributors  . . . . . . . . . . . . . . . . . . . . . . . . . .  15
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  16
+     3.1.  Multi-inheritance . . . . . . . . . . . . . . . . . . . .  12
+     3.2.  Example (Link augmentation) . . . . . . . . . . . . . . .  13
+   4.  Implemented profiles  . . . . . . . . . . . . . . . . . . . .  14
+   5.  Security Considerations . . . . . . . . . . . . . . . . . . .  15
+   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  15
+   Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  15
+   References  . . . . . . . . . . . . . . . . . . . . . . . . . . .  15
+     Normative References  . . . . . . . . . . . . . . . . . . . . .  15
+     Informative References  . . . . . . . . . . . . . . . . . . . .  16
+   Contributors  . . . . . . . . . . . . . . . . . . . . . . . . . .  17
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  17
 
 1.  Introduction
 
@@ -99,20 +103,21 @@ Table of Contents
    scientific principles to the measurement, characterization, modeling,
    and control of Internet traffic.
 
+
+
+
+
+
+
+Busi, et al.             Expires 22 January 2022                [Page 2]
+
+Internet-Draft            TE Topology Profiles                 July 2021
+
+
    The TE Topology Model is augmenting the Network Topology Model
    defined in [RFC8345] with generic and technology-agnostic features
    that some are strictly applicable to TE networks, while others
    applicable to both TE and non-TE networks.
-
-
-
-
-
-
-Busi, et al.             Expires 13 January 2022                [Page 2]
-
-Internet-Draft            TE Topology Profiles                 July 2021
-
 
    Examples of such features that are applicable to both TE and non-TE
    networks are: inter-domain link discovery (plug-id), geo-
@@ -150,6 +155,21 @@ Internet-Draft            TE Topology Profiles                 July 2021
    The following profile of the TE Topology model can be used for the
    UNI Topology Discovery:
 
+
+
+
+
+
+
+
+
+
+
+Busi, et al.             Expires 22 January 2022                [Page 3]
+
+Internet-Draft            TE Topology Profiles                 July 2021
+
+
      module: ietf-te-topology
        augment /nw:networks/nw:network/nw:network-types:
          +--rw te-topology!
@@ -162,13 +182,6 @@ Internet-Draft            TE Topology Profiles                 July 2021
             +--ro oper-status?                   te-types:te-oper-status
 
                           Figure 1: UNI Topology
-
-
-
-Busi, et al.             Expires 13 January 2022                [Page 3]
-
-Internet-Draft            TE Topology Profiles                 July 2021
-
 
    The profile data model shown in Figure 1 can be used to discover TE
    and non TE UNIs as well as to discover UNIs for TE or non TE
@@ -205,6 +218,14 @@ Internet-Draft            TE Topology Profiles                 July 2021
       oper-status attributes defined in
       [I-D.ogondio-opsawg-uni-topology].
 
+
+
+
+Busi, et al.             Expires 22 January 2022                [Page 4]
+
+Internet-Draft            TE Topology Profiles                 July 2021
+
+
       Following the same approach in
       [I-D.ietf-ccamp-eth-client-te-topo-yang] and
       [I-D.ietf-ccamp-otn-topo-yang], the type and encapsulation-type
@@ -218,13 +239,6 @@ Internet-Draft            TE Topology Profiles                 July 2021
    *  discovering UNIs as well as inter-domain NNI links, which is
       applicable to any technology (TE or non TE) used at the UNI or
       within the network;
-
-
-
-Busi, et al.             Expires 13 January 2022                [Page 4]
-
-Internet-Draft            TE Topology Profiles                 July 2021
-
 
    *  modelling non TE UNIs such as Ethernet, and TE UNIs such as OTN,
       as well as UNIs which can configured as TE or non-TE (e.g., being
@@ -240,6 +254,33 @@ Internet-Draft            TE Topology Profiles                 July 2021
 
    The following profile of the TE Topology Model can be used for
    administrative and operational state management:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Busi, et al.             Expires 22 January 2022                [Page 5]
+
+Internet-Draft            TE Topology Profiles                 July 2021
+
 
     module: ietf-te-topology
       augment /nw:networks/nw:network/nw:network-types:
@@ -273,15 +314,6 @@ Internet-Draft            TE Topology Profiles                 July 2021
 
       Figure 2: Generic Topology with admin and operational state
 
-
-
-
-
-Busi, et al.             Expires 13 January 2022                [Page 5]
-
-Internet-Draft            TE Topology Profiles                 July 2021
-
-
    The TE topology data model profile shown in Figure 2 is applicable to
    any technology (TE or non-TE) that requires management of the
    administrative and operational state and administrative names for
@@ -296,6 +328,15 @@ Internet-Draft            TE Topology Profiles                 July 2021
 
    The TE topology data model profile shown in Figure 3 can be used to
    model geolocation data for networks.
+
+
+
+
+
+Busi, et al.             Expires 22 January 2022                [Page 6]
+
+Internet-Draft            TE Topology Profiles                 July 2021
+
 
       module: ietf-te-topology
         augment /nw:networks/nw:network/nw:network-types:
@@ -328,16 +369,6 @@ Internet-Draft            TE Topology Profiles                 July 2021
    that requires management of the geolocation information for its nodes
    and termination points.
 
-
-
-
-
-
-Busi, et al.             Expires 13 January 2022                [Page 6]
-
-Internet-Draft            TE Topology Profiles                 July 2021
-
-
 2.4.  Overlay and Underlay non-TE Topologies
 
    The TE Topology model supports the management of overlay/underlay
@@ -347,6 +378,21 @@ Internet-Draft            TE Topology Profiles                 July 2021
 
    The following TE topology data model profile can be used to manage
    overlay/underlay network data:
+
+
+
+
+
+
+
+
+
+
+
+Busi, et al.             Expires 22 January 2022                [Page 7]
+
+Internet-Draft            TE Topology Profiles                 July 2021
+
 
     module: ietf-te-topology
       augment /nw:netorks/nw:network/nw:network-types:
@@ -382,18 +428,6 @@ Internet-Draft            TE Topology Profiles                 July 2021
 
       Figure 4: Generic Topology with overlay/underlay information
 
-
-
-
-
-
-
-
-Busi, et al.             Expires 13 January 2022                [Page 7]
-
-Internet-Draft            TE Topology Profiles                 July 2021
-
-
    This profile is applicable to any technology (TE or non-TE) when it
    is needed to manage the overlay/underlay information.  It is also
    allows a TE underlay network to support a non-TE overlay network and,
@@ -408,6 +442,13 @@ Internet-Draft            TE Topology Profiles                 July 2021
    *  the node represents a physical device with switching limitations;
 
    *  the node represents an abstraction of a network topology.
+
+
+
+Busi, et al.             Expires 22 January 2022                [Page 8]
+
+Internet-Draft            TE Topology Profiles                 July 2021
+
 
    This scenario is generic and applies to both TE and non-TE
    technologies.
@@ -440,16 +481,6 @@ Internet-Draft            TE Topology Profiles                 July 2021
 
           Figure 5: Generic Topology with connectivity constraints
 
-
-
-
-
-
-Busi, et al.             Expires 13 January 2022                [Page 8]
-
-Internet-Draft            TE Topology Profiles                 July 2021
-
-
    The TE topology data model profile shown in Figure 5 is applicable to
    any technology (TE or non-TE) networks that requires managing nodes
    with certain connectivity constraints.  When used with TE
@@ -467,6 +498,13 @@ Internet-Draft            TE Topology Profiles                 July 2021
 
    The first option is to define a technology-specific TE Topology Model
    which augments the TE Topology Model, as shown in Figure 6:
+
+
+
+Busi, et al.             Expires 22 January 2022                [Page 9]
+
+Internet-Draft            TE Topology Profiles                 July 2021
+
 
                               +-------------------+
                               | Network Topology  |
@@ -497,15 +535,6 @@ Internet-Draft            TE Topology Profiles                 July 2021
    allows providing augmentations to the Network Topology constructs,
    such as nodes, links, and termination points (TPs).
 
-
-
-
-
-Busi, et al.             Expires 13 January 2022                [Page 9]
-
-Internet-Draft            TE Topology Profiles                 July 2021
-
-
    This is the approach currently used in
    [I-D.ietf-ccamp-eth-client-te-topo-yang] and
    [I-D.ietf-ccamp-otn-topo-yang].
@@ -521,6 +550,17 @@ Internet-Draft            TE Topology Profiles                 July 2021
    multiple inheritance capability, which is implicit in the network-
    types definition of [RFC8345], to allow using also the generic
    attributes defined in the TE Topology model:
+
+
+
+
+
+
+
+Busi, et al.             Expires 22 January 2022               [Page 10]
+
+Internet-Draft            TE Topology Profiles                 July 2021
+
 
                        +-----------------------+
                        |    Network Topology   |
@@ -557,7 +597,23 @@ Internet-Draft            TE Topology Profiles                 July 2021
 
 
 
-Busi, et al.             Expires 13 January 2022               [Page 10]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Busi, et al.             Expires 22 January 2022               [Page 11]
 
 Internet-Draft            TE Topology Profiles                 July 2021
 
@@ -613,7 +669,7 @@ Internet-Draft            TE Topology Profiles                 July 2021
 
 
 
-Busi, et al.             Expires 13 January 2022               [Page 11]
+Busi, et al.             Expires 22 January 2022               [Page 12]
 
 Internet-Draft            TE Topology Profiles                 July 2021
 
@@ -669,7 +725,7 @@ Internet-Draft            TE Topology Profiles                 July 2021
 
 
 
-Busi, et al.             Expires 13 January 2022               [Page 12]
+Busi, et al.             Expires 22 January 2022               [Page 13]
 
 Internet-Draft            TE Topology Profiles                 July 2021
 
@@ -725,7 +781,7 @@ Internet-Draft            TE Topology Profiles                 July 2021
 
 
 
-Busi, et al.             Expires 13 January 2022               [Page 13]
+Busi, et al.             Expires 22 January 2022               [Page 14]
 
 Internet-Draft            TE Topology Profiles                 July 2021
 
@@ -754,9 +810,19 @@ Internet-Draft            TE Topology Profiles                 July 2021
 
    This document requires no IANA actions.
 
-7.  References
+Acknowledgments
 
-7.1.  Normative References
+   The authors would like to thank Daniele Ceccarelli, Jonas Ahlberg and
+   Scott Mansfield for providing useful suggestions for this draft.
+
+   This document was prepared using kramdown.
+
+   Previous versions of this document was prepared using 2-Word-
+   v2.0.template.dot.
+
+References
+
+Normative References
 
    [RFC8342]  Bjorklund, M., Schoenwaelder, J., Shafer, P., Watsen, K.,
               and R. Wilton, "Network Management Datastore Architecture
@@ -768,23 +834,21 @@ Internet-Draft            TE Topology Profiles                 July 2021
               Network Topologies", RFC 8345, DOI 10.17487/RFC8345, March
               2018, <https://www.rfc-editor.org/info/rfc8345>.
 
+
+
+
+Busi, et al.             Expires 22 January 2022               [Page 15]
+
+Internet-Draft            TE Topology Profiles                 July 2021
+
+
    [RFC8795]  Liu, X., Bryskin, I., Beeram, V., Saad, T., Shah, H., and
               O. Gonzalez de Dios, "YANG Data Model for Traffic
               Engineering (TE) Topologies", RFC 8795,
               DOI 10.17487/RFC8795, August 2020,
               <https://www.rfc-editor.org/info/rfc8795>.
 
-7.2.  Informative References
-
-
-
-
-
-
-Busi, et al.             Expires 13 January 2022               [Page 14]
-
-Internet-Draft            TE Topology Profiles                 July 2021
-
+Informative References
 
    [I-D.ietf-ccamp-eth-client-te-topo-yang]
               Zheng, H., Guo, A., Busi, I., Xu, Y., Zhao, Y., and X.
@@ -825,21 +889,21 @@ Internet-Draft            TE Topology Profiles                 July 2021
               <https://www.ietf.org/archive/id/draft-ogondio-opsawg-uni-
               topology-01.txt>.
 
+
+
+
+
+Busi, et al.             Expires 22 January 2022               [Page 16]
+
+Internet-Draft            TE Topology Profiles                 July 2021
+
+
 Contributors
 
    Aihua Guo
    Futurewei Inc.
 
    Email: aihuaguo.ietf@gmail.com
-
-
-
-
-
-
-Busi, et al.             Expires 13 January 2022               [Page 15]
-
-Internet-Draft            TE Topology Profiles                 July 2021
 
 
    Haomian Zheng
@@ -880,6 +944,16 @@ Authors' Addresses
    Email: vbeeram@juniper.net
 
 
+
+
+
+
+
+Busi, et al.             Expires 22 January 2022               [Page 17]
+
+Internet-Draft            TE Topology Profiles                 July 2021
+
+
    Tarek Saad
    Juniper Networks
 
@@ -893,4 +967,42 @@ Authors' Addresses
 
 
 
-Busi, et al.             Expires 13 January 2022               [Page 16]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Busi, et al.             Expires 22 January 2022               [Page 18]
