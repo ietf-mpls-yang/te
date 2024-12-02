@@ -1,0 +1,24 @@
+module: ietf-te-p2mp
+  +--rw te!
+     +--rw tunnels
+        +--rw tunnel-p2mp* [name]
+           +--ro operational-state?    identityref
+           +--rw name                  string
+           +--rw p2mp-id?              uint32
+           +--rw identifier?           uint16
+           +--rw description?          string
+           +--rw encoding?             identityref
+           +--rw switching-type?       identityref
+           +--rw provisioning-state?   identityref
+           +--rw preference?           uint8
+           +--rw reoptimize-timer?     uint16
+           +--rw source?               te-types:te-node-id
+           +--rw src-tp-id?            yang:hex-string
+           +--rw destinations* [destination dst-tp-id]
+           |  +--rw destination    te-types:te-node-id
+           |  +--rw dst-tp-id      yang:hex-string
+           +--rw p2mp-primary-paths
+              +--rw p2mp-primary-path* [name]
+                 +--rw s2l-paths* [name]
+                 |  +--rw name    string
+                 +--rw name         string

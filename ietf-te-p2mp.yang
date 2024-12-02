@@ -1,0 +1,268 @@
+module ietf-te-p2mp {
+  yang-version 1.1;
+  /* Replace prefix with IANA when assigned */
+  prefix "te-p2mp";
+  /* Replace namespace with IANA when assigned */ 
+  namespace "urn:ietf:params:xml:ns:yang:ietf-te-p2mp";
+  
+   /* Import TE types module */
+  import ietf-te-types {
+     prefix te-types;
+     reference
+       "RFC 8776: Common YANG Data Types for Traffic Engineering";
+   }
+
+   /* Import TE module */
+   import ietf-te {
+     prefix te;
+     reference
+       "draft-ietf-teas-yang-te: A YANG Data Model for Traffic
+        Engineering Tunnels and Interfaces";
+   }
+
+  import ietf-inet-types {
+    prefix inet;
+    reference "RFC6991: Common YANG Data Types";
+  }
+
+  import ietf-yang-types {
+    prefix "yang";
+    reference "RFC6991: Common YANG Data Types";
+  }
+
+  organization
+    "IETF Traffic Engineering Architecture and Signaling (TEAS)
+     Working Group";
+
+  contact
+    "WG Web:   <http://tools.ietf.org/wg/teas/>
+     WG List:  <mailto:teas@ietf.org>
+
+     Editor:   Oscar Gonzalez de Dios
+               <mailto:oscar.gonzalezdedios@telefonica.com>";
+    
+
+  description
+    "YANG data module for point-to-multi-point TE configuration,
+	state, and RPCs.
+     The model fully conforms to the Network Management
+     Datastore Architecture (NMDA).
+
+     Copyright (c) 2019 IETF Trust and the persons
+     identified as authors of the code.  All rights reserved.
+
+     Redistribution and use in source and binary forms, with or
+     without modification, is permitted pursuant to, and subject
+     to the license terms contained in, the Simplified BSD License
+     set forth in Section 4.c of the IETF Trust's Legal Provisions
+     Relating to IETF Documents
+     (https://trustee.ietf.org/license-info).
+     This version of this YANG module is part of RFC XXXX; see
+     the RFC itself for full legal notices.";
+
+  // RFC Ed.: replace XXXX with actual RFC number and remove this
+  // note.
+
+  // RFC Ed.: update the date below with the date of RFC publication
+  // and remove this note.
+
+
+  revision "2020-09-18" {
+    description "First draft.";
+    reference
+      "draft: A YANG Data Model for taffic Engineering point-to-multipoint Tunnels";
+  }
+
+/* groupings */
+
+/* TE tunnels container data */
+  grouping p2mp-tunnels-grouping {
+    description
+      "Tunnels TE configuration data grouping";
+    container p2mp-tunnels {
+      description
+        "Tunnels TE configuration data container";
+
+      list tunnel-p2mp {
+        key "name";
+        description "P2MP TE tunnels list.";
+        uses tunnel-p2mp-properties;
+        //uses tunnel-actions;
+        //uses tunnel-protection-actions;
+      }
+    }
+  }
+  
+  
+  /**
+   * TE tunnel generic groupings
+   */
+  grouping p2mp-primary-path-properties {
+    description
+      "TE p2mp tunnel primary path properties grouping";
+    uses p2mp-path-properties;
+	leaf name {
+      type string;
+      description "TE path name";
+    }
+    //uses path-constraints-common;
+    //uses p2p-path-properties-state;
+  }
+  
+  grouping p2mp-path-properties {
+    description
+      "TE tunnel path properties configuration grouping";
+	  list s2l-paths {
+        key "name";
+        description "Source to Leaf paths list.";
+        uses s2l-path-properties;
+        //uses tunnel-actions;
+        //uses tunnel-protection-actions;
+      }
+	}
+	
+  grouping s2l-path-properties {
+    description
+      "source-to-leaf (S2L) sub-LSP path properties configuration grouping";
+    leaf name {
+      type string;
+      description "Source to leaf sub-lsp path name";
+    }  
+   }
+	
+	
+  
+/* P2MP Tunnels properties */
+  grouping tunnel-p2mp-properties {
+    description
+      "Top level grouping for p2mp tunnel properties.";
+    leaf operational-state {
+      type identityref {
+        base te-types:tunnel-state-type;
+      }
+      default te-types:tunnel-state-up;
+      config 'false';
+      description "TE tunnel administrative state.";
+    }
+    uses tunnel-p2mp-config;
+	
+	container p2mp-primary-paths {
+      description "Set of P2MP primary paths container";
+      list p2mp-primary-path {
+        key "name";
+        description
+          "List of primary paths for this P2MP tunnel.";
+        uses p2mp-primary-path-properties;
+      }
+    }
+  }
+	
+	
+	grouping tunnel-p2mp-config {
+    description
+      "Configuration parameters relating to TE tunnel";
+    leaf name {
+      type string;
+      description "P2MP TE tunnel name.";
+    }
+	leaf p2mp-id {
+      type uint32;
+      description
+        "P2MP Identifier.";
+      reference "RFC4875 section 19.1.1.";
+    }
+    leaf identifier {
+      type uint16;
+      description
+        "TE tunnel Identifier.";
+      reference "RFC4875";
+    }
+    leaf description {
+      type string;
+      default 'None';
+      description
+        "Textual description for this TE P2MP tunnel";
+    }
+    leaf encoding {
+      type identityref {
+        base te-types:lsp-encoding-types;
+      }
+      default te-types:lsp-encoding-packet;
+      description "LSP encoding type";
+      reference "RFC3945";
+    }
+    leaf switching-type {
+      type identityref {
+        base te-types:switching-capabilities;
+      }
+      default te-types:switching-psc1;
+      description "LSP switching type";
+      reference "RFC3945";
+    }
+    leaf provisioning-state {
+      type identityref {
+        base te-types:tunnel-state-type;
+      }
+      default te-types:tunnel-state-up;
+      description "TE tunnel administrative state.";
+    }
+    leaf preference {
+      type uint8 {
+        range "1..255";
+      }
+      default 100;
+      description
+        "Specifies a preference for this tunnel.
+         A lower number signifies a better preference";
+    }
+    leaf reoptimize-timer {
+      type uint16;
+      units seconds;
+      description
+       "frequency of reoptimization of a traffic engineered LSP";
+    }
+    leaf source {
+      type te-types:te-node-id;
+      description "TE tunnel source node ID.";
+    }
+	leaf src-tp-id {
+      type yang:hex-string;
+      default '00:00:00:00';
+      description
+        "TE tunnel source termination point identifier.";
+    }
+	list destinations {
+        key "destination dst-tp-id";
+        description "destinations list.";
+		leaf destination {
+			type te-types:te-node-id;
+			description "TE tunnel destination node ID";
+		}
+		leaf dst-tp-id {
+			type yang:hex-string;
+			description
+			"TE tunnel destination termination point identifier.";
+		}
+      }
+    
+   
+    
+    //uses tunnel-p2p-associations-properties;
+    //uses protection-restoration-properties;
+    //uses te-types:tunnel-constraints;
+    //uses p2p-dependency-tunnels-properties;
+    //uses hierarchical-link-properties;
+  }
+
+
+/*** End of P2MP TE global groupings ***/
+
+   
+   augment "/te:te" {
+     description
+       "TE global container.";
+     /* P2MP Configuration Data */
+     uses p2mp-tunnels-grouping;
+   }
+ 
+ }
