@@ -78,6 +78,8 @@ YANG {{!RFC6020}} {{!RFC7950}} is a data modeling language used to model configu
 
 This document introduces a collection of common data types derived from the built-in YANG data types. The derived data types, identities, and groupings are mainly designed to be the common definitions applicable for modeling Traffic Engineering (TE) features in model(s) defined outside of this document. Nevertheless, these common definitions can be used by any other module per the guidance in {{Section 4.12 of ?I-D.ietf-netmod-rfc8407bis}}.
 
+The YANG data model in this document conforms to the Network Management Datastore Architecture defined in {{!RFC8342}}.
+
 This document adds new common data types, identities, and groupings to both the "ietf-te-types" and the "ietf-te-packet-types" YANG modules and obsoletes {{!RFC8776}}. For further details, refer to {{changes-bis}}.
 
 ## Terminology
@@ -181,6 +183,9 @@ performance-metrics-throttle-container:
 explicit-route-hop:
 : A YANG grouping that defines supported explicit routes as defined in {{!RFC3209}} and {{!RFC3477}}.
 
+explicit-route-hop-with-srlg:
+: A YANG grouping that augments the 'explicit-route-hop' to specify also Shared Risk Link Group (SRLG) hops.
+
 encoding-and-switching-type:
 : This is a common grouping to define the LSP encoding and switching types.
 
@@ -255,13 +260,15 @@ te-tunnel-type:
 : A base YANG identity for supported TE tunnel types as defined in {{!RFC3209}} and {{!RFC4875}}.
 
 lsp-encoding-types:
-: A base YANG identity for supported LSP encoding types as defined in {{!RFC3471}}.
+: A base YANG identity for supported LSP encoding types as defined in {{!RFC3471}}, {{!RFC4328}} and {{!RFC6004}}.
+: Additional technology-specific LSP encoding types can be defined in other technology-specific models.
 
 lsp-protection-type:
 : A base YANG identity for supported LSP protection types as defined in {{!RFC4872}} and {{!RFC4873}}.
 
 switching-capabilities:
-: A base YANG identity for supported interface switching capabilities as defined in {{!RFC3471}}.
+: A base YANG identity for supported interface switching capabilities as defined in {{!RFC3471}}, {{!RFC6002}}, {{!RFC6004}}, {{!RFC7074}} and {{!RFC7138}}.
+: Additional technology-specific interface switching capabilities can be defined in other technology-specific models.
 
 resource-affinities-type:
 : A base YANG identity for supported attribute filters associated with a tunnel that must be satisfied for a link to be acceptable as defined in {{!RFC3209}} and {{?RFC2702}}.
@@ -278,7 +285,7 @@ path-computation-error-reason:
 : A base YANG identity for indicating path computation error reasons as defined in {{pc-error}}.
 
 protocol-origin-type:
-:  A base YANG identity for the type of protocol origin as defined in {{protocol-origin}}.
+: A base YANG identity for the type of protocol origin as defined in {{protocol-origin}}.
 
 svec-objective-function-type:
 : A base YANG identity for supported SVEC objective functions as defined in {{!RFC5541}} and {{!RFC8685}}.
@@ -303,7 +310,7 @@ The derived identities are defined in the "ietf-te-types" module, instead of an 
 
 1. applicable only to the TE YANG models and not to PCEP environments (e.g., path-computation-error-no-topology);
 1. technology-specific (e.g., No RWA constraints met) which are better defined in technology-specific YANG models;
-1. match more than one PCEP numbers in order to hide the details of the underlay PCE architecture (e.g.,  path-computation-error-no-dependent-server).
+1. match more than one PCEP numbers in order to hide the details of the underlay PCE architecture (e.g., path-computation-error-no-dependent-server).
 
 #### Protocol Origin {#protocol-origin}
 
@@ -312,7 +319,7 @@ The "ietf-te-types" module contains the YANG reusable identities for the type of
 It also defines the following additional YANG reusable identities for the type of protocol origin:
 
 protocol-origin-api:
-:  A YANG identity to be used when  the type of protocol origin is an Application Programmable Interface (API).
+: A YANG identity to be used when the type of protocol origin is an Application Programmable Interface (API).
 
 ## Packet TE Types Module Contents
 
@@ -368,20 +375,20 @@ In addition to {{!RFC6991}} and {{!RFC8294}}, this module references the followi
 {{?RFC9522}}, {{!RFC4090}}, {{!RFC4202}}, {{!RFC4328}}, {{!RFC4561}}, {{?RFC4657}}, {{?RFC4736}}, {{!RFC6004}}, {{!RFC6378}}, {{!RFC6511}}, {{!RFC7139}}, {{!RFC7271}}, {{!RFC7308}}, {{!RFC7551}}, {{!RFC7571}}, {{!RFC7579}}, and {{ITU-T_G.709}}.
 
 ~~~~ yang
-{::include ../../ietf-te-types.yang}
+{::include-fold ../../ietf-te-types.yang}
 ~~~~
 {: #fig-te-yang title="TE Types YANG module"
-sourcecode-markers="true" sourcecode-name="ietf-te-types@2024-11-09.yang"}
+sourcecode-markers="true" sourcecode-name="ietf-te-types@2024-11-28.yang"}
 
 # Packet TE Types YANG Module {#pkt-yang-code}
 
 The "ietf-te-packet-types" module imports from the "ietf-te-types" module defined in {{te-yang-code}} of this document.
 
 ~~~~ yang
-{::include ../../ietf-te-packet-types.yang}
+{::include-fold ../../ietf-te-packet-types.yang}
 ~~~~
 {: #fig-pkt-yang title="Packet TE Types YANG module"
-sourcecode-markers="true" sourcecode-name="ietf-te-packet-types@2024-10-30.yang"}
+sourcecode-markers="true" sourcecode-name="ietf-te-packet-types@2024-11-28.yang"}
 
 # IANA Considerations
 
@@ -455,13 +462,13 @@ The data type of every leaf node is shown near the right end of the correspondin
 ## TE Types Schema Tree
 
 ~~~~ ascii-art
-{::include ../../ietf-te-types.tree.fold}
+{::include-fold ../../ietf-te-types.tree}
 ~~~~
 
 ## Packet TE Types Schema Tree
 
 ~~~~ ascii-art
-{::include ../../ietf-te-packet-types.tree.fold}
+{::include-fold ../../ietf-te-packet-types.tree}
 ~~~~
 
 # Changes from RFC 8776 {#changes-bis}
@@ -501,6 +508,8 @@ The following new data types have been added to the 'ietf-te-types' module:
 - te-gen-node-id.
 
 The following new groupings have been added to the 'ietf-te-types' module:
+
+- explicit-route-hop-with-srlg;
 
 - encoding-and-switching-type;
 
@@ -633,7 +642,7 @@ The following groupings, already defined in {{!RFC8776}}, have been updated in t
       - increase the set of derived identities that are allowed and;
 
       - remove from this set the 'path-metric-optimize-includes' and the 'path-metric-optimize-excludes' identities (bug fixing)
-      
+
 - generic-path-optimization
 
    The following new leaf have been added to the 'generic-path-optimization' grouping:
@@ -644,7 +653,7 @@ The following groupings, already defined in {{!RFC8776}}, have been updated in t
 
     - tiebreakers.
 
-The following identities, already defined in {{!RFC8776}}, have been obsoletes in the 'ietf-te-types' module for bug fixing:
+The following identities, already defined in {{!RFC8776}}, have been obsoleted in the 'ietf-te-types' module for bug fixing:
 
 - of-minimize-agg-bandwidth-consumption;
 

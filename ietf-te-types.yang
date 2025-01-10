@@ -54,9 +54,10 @@ module ietf-te-types {
                <mailto:i_bryskin@yahoo.com>";
   description
     "This YANG module contains a collection of generally useful
-     YANG data type definitions specific to TE.  The model fully
-     conforms to the Network Management Datastore Architecture
-     (NMDA).
+     YANG data type definitions specific to TE.
+     
+     The model conforms to the Network Management Datastore
+     Architecture (NMDA).
 
      The key words 'MUST', 'MUST NOT', 'REQUIRED', 'SHALL', 'SHALL
      NOT', 'SHOULD', 'SHOULD NOT', 'RECOMMENDED', 'NOT RECOMMENDED',
@@ -64,7 +65,7 @@ module ietf-te-types {
      described in BCP 14 (RFC 2119) (RFC 8174) when, and only when,
      they appear in all capitals, as shown here.
 
-     Copyright (c) 2024 IETF Trust and the persons identified as
+     Copyright (c) 2025 IETF Trust and the persons identified as
      authors of the code.  All rights reserved.
 
      Redistribution and use in source and binary forms, with or
@@ -77,7 +78,7 @@ module ietf-te-types {
      This version of this YANG module is part of RFC XXXX
      (https://www.rfc-editor.org/info/rfcXXXX); see the RFC itself
      for full legal notices.";
-  revision 2024-11-09 {
+  revision 2025-01-10 {
     description
       "This revision adds the following new identities:
       - lsp-provisioning-error-reason;
@@ -97,6 +98,7 @@ module ietf-te-types {
       - path-type.
 
       This revision adds the following new groupings:
+      - explicit-route-hop-with-srlg;
       - encoding-and-switching-type;
       - te-generic-node-id.
 
@@ -185,8 +187,10 @@ module ietf-te-types {
        in 'hex-string' type.
 
        The most significant byte in the hex-string is the farthest
-       to the left in the byte sequence.  Leading zero bytes in the
-       configured value may be omitted for brevity.";
+       to the left in the byte sequence.
+       
+       Leading zero bytes in the configured value may be omitted
+       for brevity.";
     reference
       "RFC 3630: Traffic Engineering (TE) Extensions to OSPF
                  Version 2
@@ -211,8 +215,10 @@ module ietf-te-types {
        representation in 'hex-string' type.
 
        The most significant byte in the hex-string is the farthest
-       to the left in the byte sequence.  Leading zero bytes in the
-       configured value may be omitted for brevity.";
+       to the left in the byte sequence.
+       
+       Leading zero bytes in the configured value may be omitted
+       for brevity.";
     reference
       "RFC 7308: Extended Administrative Groups in MPLS Traffic
                  Engineering (MPLS-TE)";
@@ -241,12 +247,16 @@ module ietf-te-types {
       enum normal {
         value 1;
         description
-          "Normal.  Indicates that the anomalous bit is not set.";
+          "Normal.
+          
+          Indicates that the anomalous bit is not set.";
       }
       enum abnormal {
         value 2;
         description
-          "Abnormal.  Indicates that the anomalous bit is set.";
+          "Abnormal.
+          
+          Indicates that the anomalous bit is set.";
       }
     }
     description
@@ -263,7 +273,7 @@ module ietf-te-types {
   typedef srlg {
     type uint32;
     description
-      "SRLG type.";
+      "Shared Risk Link Group (SRLG) type.";
     reference
       "RFC 4203: OSPF Extensions in Support of Generalized
                  Multi-Protocol Label Switching (GMPLS)
@@ -320,10 +330,11 @@ module ietf-te-types {
             + '1[01]\d|0?\d?\d)?)|0[xX][\da-fA-F]{1,8}|\d+))*';
     }
     description
-      "This is the generic bandwidth type.  It is a string containing
-       a list of numbers separated by commas, where each of these
-       numbers can be non-negative decimal, hex integer, or
-       hex float:
+      "This is the generic bandwidth type.
+
+       It is a string containing a list of numbers separated by
+       commas, where each of these numbers can be non-negative
+       decimal, hex integer, or hex float:
 
        (dec | hex | float)[*(','(dec | hex | float))]
 
@@ -333,11 +344,13 @@ module ietf-te-types {
 
        For the Optical Transport Network (OTN) switching type,
        a list of integers can be used, such as '0,2,3,1', indicating
-       two ODU0s and one ODU3.  ('ODU' stands for 'Optical Data
-       Unit'.)  For Dense Wavelength Division Multiplexing (DWDM),
+       two ODU0s and one ODU3 ('ODU' stands for 'Optical Data Unit').
+       
+       For Dense Wavelength Division Multiplexing (DWDM),
        a list of pairs of slot numbers and widths can be used,
        such as '0,2,3,3', indicating a frequency slot 0 with
        slot width 2 and a frequency slot 3 with slot width 3.
+
        Canonically, the string is represented as all lowercase and in
        hex, where the prefix '0x' precedes the hex number.";
     reference
@@ -446,10 +459,12 @@ module ietf-te-types {
   typedef te-metric {
     type uint32;
     description
-      "TE metric.";
+      "Traffic Engineering (TE)  metric.";
     reference
-      "RFC 3785: Use of Interior Gateway Protocol (IGP) Metric as a
-                 second MPLS Traffic Engineering (TE) Metric";
+      "RFC 3630: Traffic Engineering (TE) Extensions to OSPF
+                 Version 2, Section 2.5.5
+       RFC 5305: IS-IS Extensions for Traffic Engineering,
+                 Section 3.7";
   }
 
   typedef te-node-id {
@@ -513,7 +528,7 @@ module ietf-te-types {
       bit srlg {
         position 2;
         description
-          "SRLG (Shared Risk Link Group) disjoint.";
+          "Shared Risk Link Group (SRLG) disjoint.";
       }
     }
     description
@@ -539,9 +554,11 @@ module ietf-te-types {
       }
       enum recovery-succeeded {
         description
-          "The recovery action has succeeded.  The working span has
-           reported a failure/degrade condition, and the user traffic
-           is being transported (or selected) on the recovery span.";
+          "The recovery action has succeeded.
+
+           The working span has reported a failure/degrade condition,
+           and the user traffic is being transported (or selected)
+           on the recovery span.";
       }
       enum recovery-failed {
         description
@@ -632,10 +649,11 @@ module ietf-te-types {
       "An identifier for a topology.
 
        It is optional to have one or more prefixes at the beginning,
-       separated by colons.  The prefixes can be 'network-types' as
-       defined in the 'ietf-network' module in RFC 8345, to help the
-       user better understand the topology before further inquiry
-       is made.";
+       separated by colons.
+       
+       The prefixes can be 'network-types' as defined in the
+       'ietf-network' module in RFC 8345, to help the user better
+       understand the topology before further inquiry is made.";
     reference
       "RFC 8345: A YANG Data Model for Network Topologies";
   }
@@ -722,7 +740,7 @@ module ietf-te-types {
 
   feature named-srlg-groups {
     description
-      "Indicates support for named SRLG groups.";
+      "Indicates support for named Shared Risk Link Group (SRLG).";
   }
 
   feature named-path-constraints {
@@ -760,7 +778,7 @@ module ietf-te-types {
         "Local protection is desired.";
       reference
         "RFC 3209: RSVP-TE: Extensions to RSVP for LSP Tunnels,
-                  Section 4.7.1";
+                   Section 4.7.1";
     }
 
     identity se-style-desired {
@@ -778,7 +796,7 @@ module ietf-te-types {
         "Label recording is desired.";
       reference
         "RFC 3209: RSVP-TE: Extensions to RSVP for LSP Tunnels,
-                  Section 4.7.1";
+                   Section 4.7.1";
     }
 
     identity bandwidth-protection-desired {
@@ -803,9 +821,11 @@ module ietf-te-types {
       base session-attributes-flags;
       description
         "This flag indicates that a path re-evaluation (of the
-         current path in use) is requested.  Note that this does
-         not trigger any LSP reroutes but instead just signals a
-         request to evaluate whether a preferable path exists.";
+         current path in use) is requested.
+         
+         Note that this does not trigger any LSP reroutes but
+         instead just signals a request to evaluate whether a
+         preferable path exists.";
       reference
         "RFC 4736: Reoptimization of Multiprotocol Label Switching
                   (MPLS) Traffic Engineering (TE) Loosely Routed
@@ -829,9 +849,10 @@ module ietf-te-types {
       base lsp-attributes-flags;
       description
         "Indicates end-to-end rerouting behavior for an LSP
-         undergoing establishment.  This MAY also be used to
-         specify the behavior of end-to-end LSP recovery for
-         established LSPs.";
+         undergoing establishment.
+         
+         This MAY also be used to specify the behavior of end-to-end
+         LSP recovery for established LSPs.";
       reference
         "RFC 4920: Crankback Signaling Extensions for MPLS and GMPLS
                    RSVP-TE
@@ -846,13 +867,18 @@ module ietf-te-types {
       base lsp-attributes-flags;
       description
         "Indicates boundary rerouting behavior for an LSP undergoing
-         establishment.  This MAY also be used to specify
-         segment-based LSP recovery through nested crankback for
-         established LSPs.  The boundary Area Border Router (ABR) /
-         Autonomous System Border Router (ASBR) can decide to forward
-         the PathErr message upstream to either an upstream boundary
-         ABR/ASBR or the ingress LSR.  Alternatively, it can try to
-         select another egress boundary LSR.";
+         establishment.
+         
+         This MAY also be used to specify segment-based LSP recovery
+         through nested crankback for established LSPs.
+         
+         The boundary Area Border Router (ABR) / Autonomous System
+         Border Router (ASBR) can decide to forward the PathErr
+         message upstream to either an upstream boundary ABR/ASBR or
+         the ingress LSR.
+         
+         Alternatively, it can try to select another egress boundary
+         LSR.";
       reference
         "RFC 4920: Crankback Signaling Extensions for MPLS and GMPLS
                    RSVP-TE
@@ -867,8 +893,10 @@ module ietf-te-types {
       base lsp-attributes-flags;
       description
         "Indicates segment-based rerouting behavior for an LSP
-         undergoing establishment.  This MAY also be used to specify
-         segment-based LSP recovery for established LSPs.";
+         undergoing establishment.
+         
+         This MAY also be used to specify segment-based LSP recovery
+         for established LSPs.";
       reference
         "RFC 4920: Crankback Signaling Extensions for MPLS and GMPLS
                    RSVP-TE
@@ -989,7 +1017,7 @@ module ietf-te-types {
     identity srlg-collection-desired {
       base lsp-attributes-flags;
       description
-        "SRLG collection desired.";
+        "Shared Risk Link Group (SRLG) collection desired.";
       reference
         "RFC 7570: Label Switched Path (LSP) Attribute in the
                    Explicit Route Object (ERO)
@@ -1001,8 +1029,10 @@ module ietf-te-types {
       base lsp-attributes-flags;
       description
         "This flag indicates that a particular node on the LSP is
-         required to enter loopback mode.  This can also be
-         used to specify the loopback state of the node.";
+         required to enter loopback mode.
+         
+         This can also be used to specify the loopback state of the
+         node.";
       reference
         "RFC 7571: GMPLS RSVP-TE Extensions for Lock Instruct and
                    Loopback";
@@ -1255,9 +1285,10 @@ module ietf-te-types {
          querying an external source, such as a PCE server.
          In the case that an LSP is defined to be externally queried,
          it may also have associated explicit definitions (provided
-         to the external source to aid computation).  The path that
-         is returned by the external source may require further local
-         computation on the device.";
+         to the external source to aid computation).
+         
+         The path that is returned by the external source may
+         require further local computation on the device.";
       reference
         "RFC 9522: Overview and Principles of Internet Traffic
                    Engineering
@@ -1931,8 +1962,9 @@ module ietf-te-types {
       description
         "An action that starts testing whether or not Automatic 
         Protection Switching (APS) communication is operating 
-        correctly.  It is of lower priority than any
-        other state or command.";
+        correctly.
+        
+        It is of lower priority than any other state or command.";
       reference
         "RFC 7271: MPLS Transport Profile (MPLS-TP) Linear Protection
                    to Match the Operational Expectations of
@@ -2220,7 +2252,7 @@ module ietf-te-types {
     identity route-exclude-srlg {
       base route-usage-type;
       description
-        "Excludes SRLGs.";
+        "Excludes Shared Risk Link Groups (SRLGs).";
       reference
         "RFC 4874: Exclude Routes - Extension to Resource ReserVation
                    Protocol-Traffic Engineering (RSVP-TE)";
@@ -2509,31 +2541,36 @@ module ietf-te-types {
 
   identity path-computation-srlg-type {
     description
-      "Base identity for SRLG path computation.";
+      "Base identity for Shared Risk Link Group (SRLG) path
+      computation.";
   }
 
     identity srlg-ignore {
       base path-computation-srlg-type;
       description
-        "Ignores SRLGs in the path computation.";
+        "Ignores Shared Risk Link Groups (SRLGs) in the path
+        computation.";
     }
 
     identity srlg-strict {
       base path-computation-srlg-type;
       description
-        "Includes a strict SRLG check in the path computation.";
+        "Includes a strict Shared Risk Link Group (SRLG) check in
+        the path computation.";
     }
 
     identity srlg-preferred {
       base path-computation-srlg-type;
       description
-        "Includes a preferred SRLG check in the path computation.";
+        "Includes a preferred Shared Risk Link Group (SRLG) check in
+        the path computation.";
     }
 
     identity srlg-weighted {
       base path-computation-srlg-type;
       description
-        "Includes a weighted SRLG check in the path computation.";
+        "Includes a weighted Shared Risk Link Group (SRLG) check in
+        the path computation.";
     }
 
   identity path-computation-error-reason {
@@ -2723,7 +2760,7 @@ module ietf-te-types {
       base path-computation-error-reason;
       description
         "Path computation has failed because of Path-Key Subobject
-         (PKS)  expansion failure.
+         (PKS) expansion failure.
         
          It corresponds to bit 27 of the Flags field of the 
          NO-PATH-VECTOR TLV.";
@@ -2781,19 +2818,6 @@ module ietf-te-types {
       reference
         "RFC 5440: Path Computation Element (PCE) Communication
         Protocol (PCEP);
-        
-         https://www.iana.org/assignments/pcep
-         /pcep.xhtml#no-path-vector-tlv";
-    }
-
-    identity path-computation-error-no-server {
-      base path-computation-error-reason;
-      description
-        "Path computation has failed because path computation
-         server is unavailable.";
-      reference
-        "RFC 5440: Path Computation Element (PCE) Communication
-                   Protocol (PCEP);
         
          https://www.iana.org/assignments/pcep
          /pcep.xhtml#no-path-vector-tlv";
@@ -2979,15 +3003,21 @@ module ietf-te-types {
   grouping te-bandwidth {
     description
       "This grouping defines the generic TE bandwidth.
+
        For some known data-plane technologies, specific modeling
-       structures are specified.  The string-encoded 'te-bandwidth'
-       type is used for unspecified technologies.
+       structures are specified.
+       
+       The string-encoded 'te-bandwidth' type is used for
+       unspecified technologies.
+
        The modeling structure can be augmented later for other
        technologies.";
     container te-bandwidth {
       description
-        "Container that specifies TE bandwidth.  The choices
-         can be augmented for specific data-plane technologies.";
+        "Container that specifies TE bandwidth.
+
+         The choices can be augmented for specific data-plane
+         technologies.";
       choice technology {
         default "generic";
         description
@@ -3010,13 +3040,17 @@ module ietf-te-types {
   grouping te-label {
     description
       "This grouping defines the generic TE label.
+
        The modeling structure can be augmented for each technology.
+
        For unspecified technologies, 'rt-types:generalized-label'
        is used.";
     container te-label {
       description
-        "Container that specifies the TE label.  The choices can
-         be augmented for specific data-plane technologies.";
+        "Container that specifies the TE label.
+
+         The choices can be augmented for specific data-plane
+         technologies.";
       choice technology {
         default "generic";
         description
@@ -3065,8 +3099,10 @@ module ietf-te-types {
         default "";
         description
           "When the datastore contains several topologies,
-           'topology-id' distinguishes between them.  If omitted,
-           the default (empty) string for this leaf is assumed.";
+           'topology-id' distinguishes between them.
+           
+           If omitted, the default (empty) string for this leaf is
+           assumed.";
       }
     }
   }
@@ -3078,9 +3114,10 @@ module ietf-te-types {
   grouping performance-metrics-one-way-delay-loss {
     description
       "Performance Metrics (PM) information in real time that can
-       be applicable to links or connections.  PM defined in this
-       grouping are applicable to generic TE PM as well as packet TE
-       PM.";
+       be applicable to links or connections.
+       
+       PM defined in this grouping are applicable to generic TE PM
+       as well as packet TE PM.";
     reference
       "RFC 7471: OSPF Traffic Engineering (TE) Metric Extensions
        RFC 8570: IS-IS Traffic Engineering (TE) Metric Extensions
@@ -3091,8 +3128,9 @@ module ietf-te-types {
       type uint32 {
         range "0..16777215";
       }
+      units "microseconds";
       description
-        "One-way delay or latency in microseconds.";
+        "One-way delay or latency.";
     }
     leaf one-way-delay-normality {
       type te-types:performance-metrics-normality;
@@ -3103,9 +3141,11 @@ module ietf-te-types {
 
   grouping performance-metrics-two-way-delay-loss {
     description
-      "PM information in real time that can be applicable to links or
-       connections.  PM defined in this grouping are applicable to
-       generic TE PM as well as packet TE PM.";
+      "Performance Metrics (PM) information in real time that can be
+       applicable to links or connections.
+       
+       PM defined in this grouping are applicable to generic TE PM
+       as well as packet TE PM.";
     reference
       "RFC 7471: OSPF Traffic Engineering (TE) Metric Extensions
        RFC 8570: IS-IS Traffic Engineering (TE) Metric Extensions
@@ -3116,8 +3156,9 @@ module ietf-te-types {
       type uint32 {
         range "0..16777215";
       }
+      units "microseconds";
       description
-        "Two-way delay or latency in microseconds.";
+        "Two-way delay or latency.";
     }
     leaf two-way-delay-normality {
       type te-types:performance-metrics-normality;
@@ -3128,7 +3169,9 @@ module ietf-te-types {
 
   grouping performance-metrics-one-way-bandwidth {
     description
-      "PM information in real time that can be applicable to links.
+      "Performance Metrics (PM) information in real time that can be
+      applicable to links.
+       
        PM defined in this grouping are applicable to generic TE PM
        as well as packet TE PM.";
     reference
@@ -3162,9 +3205,10 @@ module ietf-te-types {
       description
         "Available bandwidth that is defined to be residual
          bandwidth minus the measured bandwidth used for the
-         actual forwarding of non-RSVP-TE LSP packets.  For a
-         bundled link, available bandwidth is defined to be the
-         sum of the component link available bandwidths.";
+         actual forwarding of non-RSVP-TE LSP packets.
+         
+         For a bundled link, available bandwidth is defined to be
+         the sum of the component link available bandwidths.";
     }
     leaf one-way-available-bandwidth-normality {
       type te-types:performance-metrics-normality;
@@ -3192,14 +3236,15 @@ module ietf-te-types {
 
   grouping one-way-performance-metrics {
     description
-      "One-way PM throttle grouping.";
+      "One-way Performance Metrics (PM) throttle grouping.";
     leaf one-way-delay {
       type uint32 {
         range "0..16777215";
       }
+      units "microseconds";
       default "0";
       description
-        "One-way delay or latency in microseconds.";
+        "One-way delay or latency.";
     }
     leaf one-way-residual-bandwidth {
       type rt-types:bandwidth-ieee-float32;
@@ -3220,9 +3265,10 @@ module ietf-te-types {
       description
         "Available bandwidth that is defined to be residual
          bandwidth minus the measured bandwidth used for the
-         actual forwarding of non-RSVP-TE LSP packets.  For a
-         bundled link, available bandwidth is defined to be the
-         sum of the component link available bandwidths.";
+         actual forwarding of non-RSVP-TE LSP packets.
+         
+         For a bundled link, available bandwidth is defined to be
+         the sum of the component link available bandwidths.";
     }
     leaf one-way-utilized-bandwidth {
       type rt-types:bandwidth-ieee-float32;
@@ -3238,14 +3284,15 @@ module ietf-te-types {
 
   grouping two-way-performance-metrics {
     description
-      "Two-way PM throttle grouping.";
+      "Two-way Performance Metrics (PM) throttle grouping.";
     leaf two-way-delay {
       type uint32 {
         range "0..16777215";
       }
+      units "microseconds";
       default "0";
       description
-        "Two-way delay or latency in microseconds.";
+        "Two-way delay or latency.";
     }
   }
 
@@ -3259,7 +3306,7 @@ module ietf-te-types {
 
   grouping performance-metrics-attributes {
     description
-      "Contains PM attributes.";
+      "Contains Performance Metrics (PM) attributes.";
     container performance-metrics-one-way {
       description
         "One-way link performance information in real time.";
@@ -3284,7 +3331,7 @@ module ietf-te-types {
 
   grouping performance-metrics-throttle-container {
     description
-      "Controls PM throttling.";
+      "Controls Performance Metrics (PM) throttling.";
     container throttle {
       must 'suppression-interval >= measure-interval' {
         error-message "'suppression-interval' cannot be less than "
@@ -3305,32 +3352,34 @@ module ietf-te-types {
         type uint32 {
           range "0..16777215";
         }
+        units "microseconds";
         default "0";
         description
           "Offset value to be added to the measured delay value.";
       }
       leaf measure-interval {
         type uint32;
+        units "seconds";
         default "30";
         description
-          "Interval, in seconds, to measure the extended metric
-           values.";
+          "Interval to measure the extended metric values.";
       }
       leaf advertisement-interval {
         type uint32;
+        units "seconds";
         default "0";
         description
-          "Interval, in seconds, to advertise the extended metric
-           values.";
+          "Interval to advertise the extended metric values.";
       }
       leaf suppression-interval {
         type uint32 {
           range "1..max";
         }
+        units "seconds";
         default "120";
         description
-          "Interval, in seconds, to suppress advertisement of the
-           extended metric values.";
+          "Interval to suppress advertisement of the extended metric
+          values.";
         reference
           "RFC 8570: IS-IS Traffic Engineering (TE) Metric
                      Extensions, Section 6";
@@ -3453,9 +3502,10 @@ module ietf-te-types {
           leaf link-tp-id {
             type te-tp-id;
             description
-              "TE LTP identifier.  The combination of the TE link ID
-               and the TE node ID is used to identify an unnumbered
-               TE link.";
+              "TE LTP identifier.
+
+               The combination of the TE link ID and the TE node ID
+               is used to identify an unnumbered TE link.";
           }
           leaf node-id-uri {
             type nw:node-id;
@@ -3519,15 +3569,45 @@ module ietf-te-types {
     }
   }
 
+  grouping explicit-route-hop-with-srlg {
+    description
+      "Augments the explicit route entry grouping with Shared Risk
+      Link Group (SRLG) hop type.";
+    uses explicit-route-hop {
+      augment "type" {
+        case srlg {
+          container srlg {
+            description
+              "Shared Risk Link Group (SRLG) container.";
+            leaf srlg {
+              type uint32;
+              description
+                "Shared Risk Link Group (SRLG) value.";
+            }
+          }
+          description
+            "An Shared Risk Link Group (SRLG) value to be
+            included or excluded.";
+        }
+        description
+          "Augmentation for a generic explicit route for Shared
+           Risk Link Group (SRLG) inclusion or exclusion.";
+      }
+    }
+  }
+
   grouping record-route-state {
     description
       "The Record Route grouping.";
     leaf index {
       type uint32;
       description
-        "Record Route hop index.  The index is used to
-         identify an entry in the list.  The order of entries
-         is defined by the user without relying on key values.";
+        "Record Route hop index.
+
+         The index is used to identify an entry in the list.
+         
+         The order of entries is defined by the user without relying
+         on key values.";
     }
     choice type {
       description
@@ -3607,9 +3687,10 @@ module ietf-te-types {
           leaf link-tp-id {
             type te-tp-id;
             description
-              "TE LTP identifier.  The combination of the TE link ID
-               and the TE node ID is used to identify an unnumbered
-               TE link.";
+              "TE LTP identifier.
+
+               The combination of the TE link ID and the TE node ID
+               is used to identify an unnumbered TE link.";
           }
           leaf node-id-uri {
             type nw:node-id;
@@ -3730,10 +3811,13 @@ module ietf-te-types {
     container label-step {
       description
         "The step increment between labels in the label range.
-         The label start/end values will have to be consistent
-         with the sign of label step.  For example,
-         'label-start' < 'label-end' enforces 'label-step' > 0
-         'label-start' > 'label-end' enforces 'label-step' < 0.";
+
+         The label start/end values MUST be consistent with the sign
+         of label step.
+
+         For example:
+            'label-start' < 'label-end' enforces 'label-step' > 0
+            'label-start' > 'label-end' enforces 'label-step' < 0.";
       choice technology {
         default "generic";
         description
@@ -3753,8 +3837,9 @@ module ietf-te-types {
       description
         "When there are gaps between 'label-start' and 'label-end',
          this attribute is used to specify the positions
-         of the used labels.  This is represented in big endian as
-         'hex-string'.
+         of the used labels.
+         
+         This is represented in big endian as 'hex-string'.
 
          In case the restriction is 'inclusive', the bit-position is
          set if the corresponding mapped label is available.
@@ -3767,14 +3852,16 @@ module ietf-te-types {
          labels in the range are not available.
 
          The most significant byte in the hex-string is the farthest
-         to the left in the byte sequence.  Leading zero bytes in the
-         configured value may be omitted for brevity.
+         to the left in the byte sequence.
+
+         Leading zero bytes in the configured value may be omitted
+         for brevity.
+
          Each bit position in the 'range-bitmap' 'hex-string' maps
          to a label in the range derived from 'label-start'.
 
          For example, assuming that 'label-start' = 16000 and
          'range-bitmap' = 0x01000001, then:
-
          - bit position (0) is set, and the corresponding mapped
            label from the range is 16000 + (0 * 'label-step') or
            16000 for default 'label-step' = 1.
@@ -3918,9 +4005,12 @@ module ietf-te-types {
         leaf index {
           type uint32;
           description
-            "Explicit Route Object index.  The index is used to
-             identify an entry in the list.  The order of entries
-             is defined by the user without relying on key values.";
+            "Explicit Route Object index.
+
+             The index is used to identify an entry in the list.
+             
+             The order of entries is defined by the user without
+             relying on key values.";
         }
         uses explicit-route-hop;
       }
@@ -3937,35 +4027,21 @@ module ietf-te-types {
           default "te-types:route-include-object";
           description
             "Indicates whether to include or exclude the
-             route object.  The default is to include it.";
+             route object.
+
+             The default is to include it.";
         }
         leaf index {
           type uint32;
           description
-            "Route object include-exclude index.  The index is used
-             to identify an entry in the list.  The order of entries
-             is defined by the user without relying on key values.";
+            "Route object include-exclude index.
+
+             The index is used to identify an entry in the list.
+
+             The order of entries is defined by the user without
+             relying on key values.";
         }
-        uses explicit-route-hop {
-          augment "type" {
-            case srlg {
-              container srlg {
-                description
-                  "SRLG container.";
-                leaf srlg {
-                  type uint32;
-                  description
-                    "SRLG value.";
-                }
-              }
-              description
-                "An SRLG value to be included or excluded.";
-            }
-            description
-              "Augmentation for a generic explicit route for SRLG
-               exclusion.";
-          }
-        }
+        uses explicit-route-hop-with-srlg;
       }
     }
   }
@@ -3983,9 +4059,12 @@ module ietf-te-types {
       leaf index {
         type uint32;
         description
-          "Route object entry index.  The index is used to
-           identify an entry in the list.  The order of entries
-           is defined by the user without relying on key values.";
+          "Route object entry index.
+
+             The index is used to identify an entry in the list.
+             
+             The order of entries is defined by the user without
+             relying on key values.";
       }
       uses explicit-route-hop;
     }
@@ -4004,30 +4083,14 @@ module ietf-te-types {
       leaf index {
         type uint32;
         description
-          "Route object entry index.  The index is used to
-           identify an entry in the list.  The order of entries
-           is defined by the user without relying on key values.";
+          "Route object entry index.
+
+             The index is used to identify an entry in the list.
+             
+             The order of entries is defined by the user without
+             relying on key values.";
       }
-      uses explicit-route-hop {
-        augment "type" {
-          case srlg {
-            container srlg {
-              description
-                "SRLG container.";
-              leaf srlg {
-                type uint32;
-                description
-                  "SRLG value.";
-              }
-            }
-            description
-              "An SRLG value to be included or excluded.";
-          }
-          description
-            "Augmentation for a generic explicit route for SRLG
-             exclusion.";
-        }
-      }
+      uses explicit-route-hop-with-srlg;
     }
   }
 
@@ -4064,7 +4127,7 @@ module ietf-te-types {
             "Upper bound on the specified 'metric-type'.
             
              A zero indicates an unbounded upper limit for the
-             specificied 'metric-type'.
+             specified 'metric-type'.
             
              The unit of is interpreted in the context of the
              'metric-type' identity.";
@@ -4170,7 +4233,9 @@ module ietf-te-types {
           type admin-groups;
           default "";
           description
-            "The affinity value.  The default is empty.";
+            "The affinity value.
+
+             The default is empty.";
         }
       }
     }
@@ -4205,48 +4270,51 @@ module ietf-te-types {
 
   grouping generic-path-srlgs {
     description
-      "Path SRLG grouping.";
+      "Path Shared Risk Link Group (SRLG) grouping.";
     container path-srlgs-lists {
       description
-        "Path SRLG properties container.";
+        "Path Shared Risk Link Group (SRLG) properties container.";
       list path-srlgs-list {
         key "usage";
         description
-          "List of SRLG values to be included or excluded.";
+          "List of Shared Risk Link Group (SRLG) values to be
+          included or excluded.";
         leaf usage {
           type identityref {
             base route-usage-type;
           }
           description
-            "Identifies an entry in a list of SRLGs to either
-             include or exclude.";
+            "Identifies an entry in a list of Shared Risk Link Groups
+            (SRLGs) to either include or exclude.";
         }
         leaf-list values {
           type srlg;
           description
-            "List of SRLG values.";
+            "List of Shared Risk Link Group (SRLG) values.";
         }
       }
     }
     container path-srlgs-names {
       description
-        "Container for the list of named SRLGs.";
+        "Container for the list of named Shared Risk Link Groups
+        (SRLGs).";
       list path-srlgs-name {
         key "usage";
         description
-          "List of named SRLGs to be included or excluded.";
+          "List of named Shared Risk Link Groups (SRLGs) to be
+          included or excluded.";
         leaf usage {
           type identityref {
             base route-usage-type;
           }
           description
-            "Identifies an entry in a list of named SRLGs to either
-             include or exclude.";
+            "Identifies an entry in a list of named Shared Risk Link
+            Groups (SRLGs) to either include or exclude.";
         }
         leaf-list names {
           type string;
           description
-            "List of named SRLGs.";
+            "List of named Shared Risk Link Groups (SRLGs).";
         }
       }
     }
@@ -4260,9 +4328,10 @@ module ietf-te-types {
       description
         "The type of resource disjointness.
          When configured for a primary path, the disjointness level
-         applies to all secondary LSPs.  When configured for a
-         secondary path, the disjointness level overrides the level
-         configured for the primary path.";
+         applies to all secondary LSPs.
+
+         When configured for a secondary path, the disjointness
+         level overrides the level configured for the primary path.";
     }
   }
 
@@ -4325,10 +4394,12 @@ module ietf-te-types {
           leaf index {
             type uint32;
             description
-              "Route object entry index.  The index is used to
-               identify an entry in the list.  The order of entries
-               is defined by the user without relying on key
-               values.";
+              "Route object entry index.
+
+               The index is used to identify an entry in the list.
+               
+               The order of entries is defined by the user without
+               relying on key values.";
           }
           uses explicit-route-hop;
         }

@@ -6,13 +6,13 @@ TEAS Working Group                                               I. Busi
 Internet-Draft                                                    Huawei
 Obsoletes: 8776 (if approved)                                     A. Guo
 Intended status: Standards Track                  Futurewei Technologies
-Expires: 19 May 2025                                              X. Liu
+Expires: 14 July 2025                                             X. Liu
                                                                Alef Edge
                                                                  T. Saad
                                                       Cisco Systems Inc.
                                                               I. Bryskin
                                                               Individual
-                                                        15 November 2024
+                                                         10 January 2025
 
 
              Common YANG Data Types for Traffic Engineering
@@ -43,19 +43,19 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 19 May 2025.
+   This Internet-Draft will expire on 14 July 2025.
 
 Copyright Notice
 
-   Copyright (c) 2024 IETF Trust and the persons identified as the
+   Copyright (c) 2025 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
 
 
 
-Busi, et al.               Expires 19 May 2025                  [Page 1]
+Busi, et al.              Expires 14 July 2025                  [Page 1]
 
-Internet-Draft            TE Common YANG Types             November 2024
+Internet-Draft            TE Common YANG Types              January 2025
 
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -83,20 +83,20 @@ Table of Contents
        3.2.1.  Groupings . . . . . . . . . . . . . . . . . . . . . .   9
        3.2.2.  Data Types  . . . . . . . . . . . . . . . . . . . . .  10
        3.2.3.  Identities  . . . . . . . . . . . . . . . . . . . . .  10
-   4.  TE Types YANG Module  . . . . . . . . . . . . . . . . . . . .  10
-   5.  Packet TE Types YANG Module . . . . . . . . . . . . . . . . . 102
-   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . . 119
-   7.  Security Considerations . . . . . . . . . . . . . . . . . . . 120
-   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . . 120
-     8.1.  Normative References  . . . . . . . . . . . . . . . . . . 120
-     8.2.  Informative References  . . . . . . . . . . . . . . . . . 128
-   Appendix A.  The Complete Schema Trees  . . . . . . . . . . . . . 130
-     A.1.  TE Types Schema Tree  . . . . . . . . . . . . . . . . . . 130
-     A.2.  Packet TE Types Schema Tree . . . . . . . . . . . . . . . 145
-   Appendix B.  Changes from RFC 8776  . . . . . . . . . . . . . . . 148
-   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . . 153
-   Contributors  . . . . . . . . . . . . . . . . . . . . . . . . . . 153
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . . 153
+   4.  TE Types YANG Module  . . . . . . . . . . . . . . . . . . . .  11
+   5.  Packet TE Types YANG Module . . . . . . . . . . . . . . . . . 104
+   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . . 122
+   7.  Security Considerations . . . . . . . . . . . . . . . . . . . 122
+   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . . 123
+     8.1.  Normative References  . . . . . . . . . . . . . . . . . . 123
+     8.2.  Informative References  . . . . . . . . . . . . . . . . . 131
+   Appendix A.  The Complete Schema Trees  . . . . . . . . . . . . . 133
+     A.1.  TE Types Schema Tree  . . . . . . . . . . . . . . . . . . 133
+     A.2.  Packet TE Types Schema Tree . . . . . . . . . . . . . . . 148
+   Appendix B.  Changes from RFC 8776  . . . . . . . . . . . . . . . 152
+   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . . 156
+   Contributors  . . . . . . . . . . . . . . . . . . . . . . . . . . 156
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . . 157
 
 1.  Introduction
 
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Busi, et al.               Expires 19 May 2025                  [Page 2]
+Busi, et al.              Expires 14 July 2025                  [Page 2]
 
-Internet-Draft            TE Common YANG Types             November 2024
+Internet-Draft            TE Common YANG Types              January 2025
 
 
    This document introduces a collection of common data types derived
@@ -165,9 +165,9 @@ Internet-Draft            TE Common YANG Types             November 2024
 
 
 
-Busi, et al.               Expires 19 May 2025                  [Page 3]
+Busi, et al.              Expires 14 July 2025                  [Page 3]
 
-Internet-Draft            TE Common YANG Types             November 2024
+Internet-Draft            TE Common YANG Types              January 2025
 
 
 1.3.  Tree Diagrams
@@ -221,9 +221,9 @@ Internet-Draft            TE Common YANG Types             November 2024
 
 
 
-Busi, et al.               Expires 19 May 2025                  [Page 4]
+Busi, et al.              Expires 14 July 2025                  [Page 4]
 
-Internet-Draft            TE Common YANG Types             November 2024
+Internet-Draft            TE Common YANG Types              January 2025
 
 
 3.1.  TE Types Module Contents
@@ -258,6 +258,10 @@ Internet-Draft            TE Common YANG Types             November 2024
    explicit-route-hop:  A YANG grouping that defines supported explicit
       routes as defined in [RFC3209] and [RFC3477].
 
+   explicit-route-hop-with-srlg:  A YANG grouping that augments the
+      'explicit-route-hop' to specify also Shared Risk Link Group (SRLG)
+      hops.
+
    encoding-and-switching-type:  This is a common grouping to define the
       LSP encoding and switching types.
 
@@ -270,17 +274,18 @@ Internet-Draft            TE Common YANG Types             November 2024
       Class-Type of traffic as defined in [RFC4124].
 
    te-label-direction:  An enumerated type for specifying the forward or
+
+
+
+Busi, et al.              Expires 14 July 2025                  [Page 5]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
       reverse direction of a label.
 
    te-hop-type:  An enumerated type for specifying that a hop is loose
       or strict.
-
-
-
-Busi, et al.               Expires 19 May 2025                  [Page 5]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
 
    te-global-id:  A type representing the identifier that uniquely
       identifies an operator, which can be either a provider or a
@@ -325,18 +330,18 @@ Internet-Draft            TE Common YANG Types             November 2024
       defined in [RFC4203] and [RFC5307].
 
    te-metric:  A type representing the TE metric as defined in
+
+
+
+Busi, et al.              Expires 14 July 2025                  [Page 6]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
       [RFC3785].
 
    te-recovery-status:  An enumerated type for the different statuses of
       a recovery action as defined in [RFC6378] and [RFC4427].
-
-
-
-
-Busi, et al.               Expires 19 May 2025                  [Page 6]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
 
    te-link-access-type:  An enumerated type for the different TE link
       access types as defined in [RFC3630].
@@ -374,25 +379,31 @@ Internet-Draft            TE Common YANG Types             November 2024
       as defined in [RFC3209] and [RFC4875].
 
    lsp-encoding-types:  A base YANG identity for supported LSP encoding
-      types as defined in [RFC3471].
+      types as defined in [RFC3471], [RFC4328] and [RFC6004].
+
+      Additional technology-specific LSP encoding types can be defined
+      in other technology-specific models.
 
    lsp-protection-type:  A base YANG identity for supported LSP
       protection types as defined in [RFC4872] and [RFC4873].
 
+
+
+Busi, et al.              Expires 14 July 2025                  [Page 7]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
    switching-capabilities:  A base YANG identity for supported interface
-      switching capabilities as defined in [RFC3471].
+      switching capabilities as defined in [RFC3471], [RFC6002],
+      [RFC6004], [RFC7074] and [RFC7138].
+
+      Additional technology-specific interface switching capabilities
+      can be defined in other technology-specific models.
 
    resource-affinities-type:  A base YANG identity for supported
       attribute filters associated with a tunnel that must be satisfied
       for a link to be acceptable as defined in [RFC3209] and [RFC2702].
-
-
-
-
-Busi, et al.               Expires 19 May 2025                  [Page 7]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
 
    path-metric-type:  A base YANG identity for supported path metric
       types as defined in [RFC3630], [RFC3785], [RFC5440], [RFC7471],
@@ -430,6 +441,15 @@ Internet-Draft            TE Common YANG Types             November 2024
    indicating path computation error reasons as defined in [RFC5440],
    [RFC5441], [RFC5520], [RFC5557], [RFC8306], and [RFC8685].
 
+
+
+
+
+Busi, et al.              Expires 14 July 2025                  [Page 8]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
    It also defines the following additional YANG reusable identities for
    indicating also the following path computation error reasons:
 
@@ -442,14 +462,6 @@ Internet-Draft            TE Common YANG Types             November 2024
       computation servers are unavailable.
 
       The dependent path computation server could be a Backward-
-
-
-
-Busi, et al.               Expires 19 May 2025                  [Page 8]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
       Recursive Path Computation (BRPC) downstream PCE or a child PCE.
 
    The derived identities are defined in the "ietf-te-types" module,
@@ -487,6 +499,13 @@ Internet-Draft            TE Common YANG Types             November 2024
    The "ietf-te-packet-types" module contains the following YANG
    reusable groupings:
 
+
+
+Busi, et al.              Expires 14 July 2025                  [Page 9]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
    performance-metrics-attributes-packet:  A YANG grouping that contains
       the generic performance metrics and additional packet-specific
       metrics.
@@ -498,13 +517,6 @@ Internet-Draft            TE Common YANG Types             November 2024
       bandwidth information and could be used in any Packet TE model
       (e.g., MPLS-TE topology model) for the path bandwidth
       representation (e.g., the bandwidth of an MPLS-TE LSP).
-
-
-
-Busi, et al.               Expires 19 May 2025                  [Page 9]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
 
       All the path and LSP bandwidth related sections in the "ietf-te-
       types" generic module, Section 4, need to be augmented with this
@@ -540,6 +552,16 @@ Internet-Draft            TE Common YANG Types             November 2024
       and [RFC4127].
 
    bandwidth-profile-type:  A base YANG identity for various bandwidth
+
+
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 10]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
       profiles specified in [MEF_10.3], [RFC2697] and [RFC2698] that may
       be used to limit bandwidth utilization of packet flows (e.g.,
       MPLS-TE LSPs).
@@ -552,23 +574,13 @@ Internet-Draft            TE Common YANG Types             November 2024
 
    *  "ietf-routing-types" as defined in [RFC8294]
 
-
-
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 10]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
    In addition to [RFC6991] and [RFC8294], this module references the
    following documents in defining the types and YANG groupings:
    [RFC9522], [RFC4090], [RFC4202], [RFC4328], [RFC4561], [RFC4657],
    [RFC4736], [RFC6004], [RFC6378], [RFC6511], [RFC7139], [RFC7271],
    [RFC7308], [RFC7551], [RFC7571], [RFC7579], and [ITU-T_G.709].
 
-   <CODE BEGINS> file "ietf-te-types@2024-11-09.yang"
+   <CODE BEGINS> file "ietf-te-types@2024-11-28.yang"
    module ietf-te-types {
      yang-version 1.1;
      namespace "urn:ietf:params:xml:ns:yang:ietf-te-types";
@@ -598,6 +610,14 @@ Internet-Draft            TE Common YANG Types             November 2024
 
      import ietf-network-topology {
        prefix "nt";
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 11]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
        reference
          "RFC 8345: A YANG Data Model for Network Topologies";
      }
@@ -610,14 +630,6 @@ Internet-Draft            TE Common YANG Types             November 2024
         WG List:  <mailto:teas@ietf.org>
 
         Editor:   Tarek Saad
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 11]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
                   <mailto:tsaad.net@gmail.com>
 
         Editor:   Rakesh Gandhi
@@ -633,9 +645,10 @@ Internet-Draft            TE Common YANG Types             November 2024
                   <mailto:i_bryskin@yahoo.com>";
      description
        "This YANG module contains a collection of generally useful
-        YANG data type definitions specific to TE.  The model fully
-        conforms to the Network Management Datastore Architecture
-        (NMDA).
+        YANG data type definitions specific to TE.
+
+        The model fully conforms to the Network Management Datastore
+        Architecture (NMDA).
 
         The key words 'MUST', 'MUST NOT', 'REQUIRED', 'SHALL', 'SHALL
         NOT', 'SHOULD', 'SHOULD NOT', 'RECOMMENDED', 'NOT RECOMMENDED',
@@ -643,7 +656,7 @@ Internet-Draft            TE Common YANG Types             November 2024
         described in BCP 14 (RFC 2119) (RFC 8174) when, and only when,
         they appear in all capitals, as shown here.
 
-        Copyright (c) 2024 IETF Trust and the persons identified as
+        Copyright (c) 2025 IETF Trust and the persons identified as
         authors of the code.  All rights reserved.
 
         Redistribution and use in source and binary forms, with or
@@ -653,10 +666,18 @@ Internet-Draft            TE Common YANG Types             November 2024
         Relating to IETF Documents
         (https://trustee.ietf.org/license-info).
 
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 12]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
         This version of this YANG module is part of RFC XXXX
         (https://www.rfc-editor.org/info/rfcXXXX); see the RFC itself
         for full legal notices.";
-     revision 2024-11-09 {
+     revision 2025-01-10 {
        description
          "This revision adds the following new identities:
          - lsp-provisioning-error-reason;
@@ -666,14 +687,6 @@ Internet-Draft            TE Common YANG Types             November 2024
          - restoration-scheme-rerouting;
          - path-metric-optimization-type;
          - link-path-metric-type;
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 12]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
          - link-metric-type and its derived identities;
          - path-computation-error-reason and its derived identities;
          - protocol-origin-type and its derived identities;
@@ -684,6 +697,7 @@ Internet-Draft            TE Common YANG Types             November 2024
          - path-type.
 
          This revision adds the following new groupings:
+         - explicit-route-hop-with-srlg;
          - encoding-and-switching-type;
          - te-generic-node-id.
 
@@ -708,6 +722,14 @@ Internet-Draft            TE Common YANG Types             November 2024
          - explicit-route-hop:
            - adds the following leaves:
              - node-id-uri;
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 13]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
              - link-tp-id-uri;
            - updates the following leaves:
              - node-id;
@@ -722,14 +744,6 @@ Internet-Draft            TE Common YANG Types             November 2024
          - optimization-metric-entry:
            - updates the following leaves:
              - metric-type;
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 13]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
          - tunnel-constraints;
            - adds the following leaves:
              - network-id;
@@ -764,6 +778,14 @@ Internet-Draft            TE Common YANG Types             November 2024
          "Initial Version of TE types.";
        reference
          "RFC 8776: Common YANG Data Types for Traffic Engineering";
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 14]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
      }
 
      /**
@@ -779,16 +801,11 @@ Internet-Draft            TE Common YANG Types             November 2024
          "Administrative group / resource class / color representation
           in 'hex-string' type.
 
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 14]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
           The most significant byte in the hex-string is the farthest
-          to the left in the byte sequence.  Leading zero bytes in the
-          configured value may be omitted for brevity.";
+          to the left in the byte sequence.
+
+          Leading zero bytes in the configured value may be omitted
+          for brevity.";
        reference
          "RFC 3630: Traffic Engineering (TE) Extensions to OSPF
                     Version 2
@@ -813,8 +830,18 @@ Internet-Draft            TE Common YANG Types             November 2024
           representation in 'hex-string' type.
 
           The most significant byte in the hex-string is the farthest
-          to the left in the byte sequence.  Leading zero bytes in the
-          configured value may be omitted for brevity.";
+          to the left in the byte sequence.
+
+          Leading zero bytes in the configured value may be omitted
+          for brevity.";
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 15]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
        reference
          "RFC 7308: Extended Administrative Groups in MPLS Traffic
                     Engineering (MPLS-TE)";
@@ -834,14 +861,6 @@ Internet-Draft            TE Common YANG Types             November 2024
      }
 
      typedef performance-metrics-normality {
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 15]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
        type enumeration {
          enum unknown {
            value 0;
@@ -851,12 +870,16 @@ Internet-Draft            TE Common YANG Types             November 2024
          enum normal {
            value 1;
            description
-             "Normal.  Indicates that the anomalous bit is not set.";
+             "Normal.
+
+             Indicates that the anomalous bit is not set.";
          }
          enum abnormal {
            value 2;
            description
-             "Abnormal.  Indicates that the anomalous bit is set.";
+             "Abnormal.
+
+             Indicates that the anomalous bit is set.";
          }
        }
        description
@@ -867,13 +890,21 @@ Internet-Draft            TE Common YANG Types             November 2024
           RFC 7823: Performance-Based Path Selection for Explicitly
                     Routed Label Switched Paths (LSPs) Using TE Metric
                     Extensions
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 16]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
           RFC 8570: IS-IS Traffic Engineering (TE) Metric Extensions";
      }
 
      typedef srlg {
        type uint32;
        description
-         "SRLG type.";
+         "Shared Risk Link Group (SRLG) type.";
        reference
          "RFC 4203: OSPF Extensions in Support of Generalized
                     Multi-Protocol Label Switching (GMPLS)
@@ -890,14 +921,6 @@ Internet-Draft            TE Common YANG Types             November 2024
          enum down {
            description
              "Disabled.";
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 16]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
          }
          enum testing {
            description
@@ -923,6 +946,14 @@ Internet-Draft            TE Common YANG Types             November 2024
        }
        description
          "Defines a type representing the common states of a TE
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 17]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
           resource.";
      }
 
@@ -938,32 +969,27 @@ Internet-Draft            TE Common YANG Types             November 2024
                + '1[01]\d|0?\d?\d)?)|0[xX][\da-fA-F]{1,8}|\d+))*';
        }
        description
-         "This is the generic bandwidth type.  It is a string containing
-          a list of numbers separated by commas, where each of these
-          numbers can be non-negative decimal, hex integer, or
-          hex float:
+         "This is the generic bandwidth type.
+
+          It is a string containing a list of numbers separated by
+          commas, where each of these numbers can be non-negative
+          decimal, hex integer, or hex float:
 
           (dec | hex | float)[*(','(dec | hex | float))]
 
           For the packet-switching type, the string encoding follows
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 17]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
           the type 'bandwidth-ieee-float32' as defined in RFC 8294
           (e.g., 0x1p10), where the units are in bytes per second.
 
           For the Optical Transport Network (OTN) switching type,
           a list of integers can be used, such as '0,2,3,1', indicating
-          two ODU0s and one ODU3.  ('ODU' stands for 'Optical Data
-          Unit'.)  For Dense Wavelength Division Multiplexing (DWDM),
+          two ODU0s and one ODU3 ('ODU' stands for 'Optical Data Unit').
+
+          For Dense Wavelength Division Multiplexing (DWDM),
           a list of pairs of slot numbers and widths can be used,
           such as '0,2,3,3', indicating a frequency slot 0 with
           slot width 2 and a frequency slot 3 with slot width 3.
+
           Canonically, the string is represented as all lowercase and in
           hex, where the prefix '0x' precedes the hex number.";
        reference
@@ -976,6 +1002,14 @@ Internet-Draft            TE Common YANG Types             November 2024
        type uint8 {
          range "0..7";
        }
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 18]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
        description
          "The Differentiated Services Class-Type of traffic.";
        reference
@@ -1002,14 +1036,6 @@ Internet-Draft            TE Common YANG Types             November 2024
      typedef te-hop-type {
        type enumeration {
          enum loose {
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 18]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
            description
              "A loose hop in an explicit path.";
          }
@@ -1032,6 +1058,14 @@ Internet-Draft            TE Common YANG Types             November 2024
              "The link is point-to-point.";
          }
          enum multi-access {
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 19]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
            description
              "The link is multi-access, including broadcast and NBMA.";
          }
@@ -1059,13 +1093,6 @@ Internet-Draft            TE Common YANG Types             November 2024
           label.";
      }
 
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 19]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
      typedef te-link-direction {
        type enumeration {
          enum incoming {
@@ -1087,6 +1114,14 @@ Internet-Draft            TE Common YANG Types             November 2024
      typedef te-metric {
        type uint32;
        description
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 20]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
          "TE metric.";
        reference
          "RFC 3785: Use of Interior Gateway Protocol (IGP) Metric as a
@@ -1114,14 +1149,6 @@ Internet-Draft            TE Common YANG Types             November 2024
           IPv6 TE Router ID TLV described in Section 4.1 of RFC 6119.
 
           The reachability of such a TE node MAY be achieved by a
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 20]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
           mechanism such as that described in Section 6.2 of RFC 6827.";
        reference
          "RFC 3630: Traffic Engineering (TE) Extensions to OSPF
@@ -1143,6 +1170,14 @@ Internet-Draft            TE Common YANG Types             November 2024
      typedef te-admin-status {
        type te-common-status;
        description
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 21]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
          "Defines a type representing the administrative status of
           a TE resource.";
      }
@@ -1162,7 +1197,7 @@ Internet-Draft            TE Common YANG Types             November 2024
          bit srlg {
            position 2;
            description
-             "SRLG (Shared Risk Link Group) disjoint.";
+             "Shared Risk Link Group (SRLG) disjoint.";
          }
        }
        description
@@ -1170,14 +1205,6 @@ Internet-Draft            TE Common YANG Types             November 2024
        reference
          "RFC 4872: RSVP-TE Extensions in Support of End-to-End
                     Generalized Multi-Protocol Label Switching (GMPLS)
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 21]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
                     Recovery";
      }
 
@@ -1196,9 +1223,19 @@ Internet-Draft            TE Common YANG Types             November 2024
          }
          enum recovery-succeeded {
            description
-             "The recovery action has succeeded.  The working span has
-              reported a failure/degrade condition, and the user traffic
-              is being transported (or selected) on the recovery span.";
+             "The recovery action has succeeded.
+
+              The working span has reported a failure/degrade condition,
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 22]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
+              and the user traffic is being transported (or selected)
+              on the recovery span.";
          }
          enum recovery-failed {
            description
@@ -1226,14 +1263,6 @@ Internet-Draft            TE Common YANG Types             November 2024
            description
              "The operator has issued a command to switch the user
               traffic to the recovery span.";
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 22]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
          }
          enum wait-to-restore {
            description
@@ -1253,6 +1282,14 @@ Internet-Draft            TE Common YANG Types             November 2024
 
      typedef te-template-name {
        type string {
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 23]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
          pattern '/?([a-zA-Z0-9\-_.]+)(/[a-zA-Z0-9\-_.]+)*';
        }
        description
@@ -1282,14 +1319,6 @@ Internet-Draft            TE Common YANG Types             November 2024
          "TE event type for notifications.";
      }
 
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 23]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
      typedef te-topology-id {
        type union {
          type string {
@@ -1305,10 +1334,19 @@ Internet-Draft            TE Common YANG Types             November 2024
          "An identifier for a topology.
 
           It is optional to have one or more prefixes at the beginning,
-          separated by colons.  The prefixes can be 'network-types' as
-          defined in the 'ietf-network' module in RFC 8345, to help the
-          user better understand the topology before further inquiry
-          is made.";
+          separated by colons.
+
+          The prefixes can be 'network-types' as defined in the
+          'ietf-network' module in RFC 8345, to help the user better
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 24]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
+          understand the topology before further inquiry is made.";
        reference
          "RFC 8345: A YANG Data Model for Network Topologies";
      }
@@ -1338,14 +1376,6 @@ Internet-Draft            TE Common YANG Types             November 2024
              "Indicates that the TE path is a primary path.";
          }
          enum secondary-path {
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 24]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
            description
              "Indicates that the TE path is a secondary path.";
          }
@@ -1363,6 +1393,14 @@ Internet-Draft            TE Common YANG Types             November 2024
           or a reverse primary, or a secondary, or a reverse secondary
           path.";
      }
+
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 25]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
 
      /* TE features */
 
@@ -1394,14 +1432,6 @@ Internet-Draft            TE Common YANG Types             November 2024
      feature named-path-affinities {
        description
          "Indicates support for named path affinities.";
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 25]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
      }
 
      feature named-extended-admin-groups {
@@ -1411,7 +1441,7 @@ Internet-Draft            TE Common YANG Types             November 2024
 
      feature named-srlg-groups {
        description
-         "Indicates support for named SRLG groups.";
+         "Indicates support for named Shared Risk Link Group (SRLG).";
      }
 
      feature named-path-constraints {
@@ -1420,6 +1450,14 @@ Internet-Draft            TE Common YANG Types             November 2024
      }
 
      feature path-optimization-metric {
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 26]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
        description
          "Indicates support for path optimization metrics.";
      }
@@ -1449,15 +1487,7 @@ Internet-Draft            TE Common YANG Types             November 2024
            "Local protection is desired.";
          reference
            "RFC 3209: RSVP-TE: Extensions to RSVP for LSP Tunnels,
-                     Section 4.7.1";
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 26]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
+                      Section 4.7.1";
        }
 
        identity se-style-desired {
@@ -1475,7 +1505,15 @@ Internet-Draft            TE Common YANG Types             November 2024
            "Label recording is desired.";
          reference
            "RFC 3209: RSVP-TE: Extensions to RSVP for LSP Tunnels,
-                     Section 4.7.1";
+                      Section 4.7.1";
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 27]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
        }
 
        identity bandwidth-protection-desired {
@@ -1500,20 +1538,14 @@ Internet-Draft            TE Common YANG Types             November 2024
          base session-attributes-flags;
          description
            "This flag indicates that a path re-evaluation (of the
-            current path in use) is requested.  Note that this does
-            not trigger any LSP reroutes but instead just signals a
-            request to evaluate whether a preferable path exists.";
+            current path in use) is requested.
+
+            Note that this does not trigger any LSP reroutes but
+            instead just signals a request to evaluate whether a
+            preferable path exists.";
          reference
            "RFC 4736: Reoptimization of Multiprotocol Label Switching
                      (MPLS) Traffic Engineering (TE) Loosely Routed
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 27]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
                      Label Switched Path (LSP)";
        }
 
@@ -1530,13 +1562,22 @@ Internet-Draft            TE Common YANG Types             November 2024
          "Base identity for LSP attributes flags.";
      }
 
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 28]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
        identity end-to-end-rerouting-desired {
          base lsp-attributes-flags;
          description
            "Indicates end-to-end rerouting behavior for an LSP
-            undergoing establishment.  This MAY also be used to
-            specify the behavior of end-to-end LSP recovery for
-            established LSPs.";
+            undergoing establishment.
+
+            This MAY also be used to specify the behavior of end-to-end
+            LSP recovery for established LSPs.";
          reference
            "RFC 4920: Crankback Signaling Extensions for MPLS and GMPLS
                       RSVP-TE
@@ -1551,25 +1592,22 @@ Internet-Draft            TE Common YANG Types             November 2024
          base lsp-attributes-flags;
          description
            "Indicates boundary rerouting behavior for an LSP undergoing
-            establishment.  This MAY also be used to specify
-            segment-based LSP recovery through nested crankback for
-            established LSPs.  The boundary Area Border Router (ABR) /
-            Autonomous System Border Router (ASBR) can decide to forward
-            the PathErr message upstream to either an upstream boundary
-            ABR/ASBR or the ingress LSR.  Alternatively, it can try to
-            select another egress boundary LSR.";
+            establishment.
+
+            This MAY also be used to specify segment-based LSP recovery
+            through nested crankback for established LSPs.
+
+            The boundary Area Border Router (ABR) / Autonomous System
+            Border Router (ASBR) can decide to forward the PathErr
+            message upstream to either an upstream boundary ABR/ASBR or
+            the ingress LSR.
+
+            Alternatively, it can try to select another egress boundary
+            LSR.";
          reference
            "RFC 4920: Crankback Signaling Extensions for MPLS and GMPLS
                       RSVP-TE
             RFC 5420: Encoding of Attributes for MPLS LSP Establishment
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 28]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
                       Using Resource Reservation Protocol Traffic
                       Engineering (RSVP-TE)
             RFC 7570: Label Switched Path (LSP) Attribute in the
@@ -1580,8 +1618,18 @@ Internet-Draft            TE Common YANG Types             November 2024
          base lsp-attributes-flags;
          description
            "Indicates segment-based rerouting behavior for an LSP
-            undergoing establishment.  This MAY also be used to specify
-            segment-based LSP recovery for established LSPs.";
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 29]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
+            undergoing establishment.
+
+            This MAY also be used to specify segment-based LSP recovery
+            for established LSPs.";
          reference
            "RFC 4920: Crankback Signaling Extensions for MPLS and GMPLS
                       RSVP-TE
@@ -1618,14 +1666,6 @@ Internet-Draft            TE Common YANG Types             November 2024
 
        identity lsp-stitching-desired {
          base lsp-attributes-flags;
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 29]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
          description
            "Indicates that LSP stitching is desired.";
          reference
@@ -1634,6 +1674,14 @@ Internet-Draft            TE Common YANG Types             November 2024
                       (GMPLS TE)
             RFC 7570: Label Switched Path (LSP) Attribute in the
                       Explicit Route Object (ERO)";
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 30]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
        }
 
        identity pre-planned-lsp-flag {
@@ -1675,13 +1723,6 @@ Internet-Draft            TE Common YANG Types             November 2024
                       Explicit Route Object (ERO)";
        }
 
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 30]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
        identity entropy-label-capability {
          base lsp-attributes-flags;
          description
@@ -1689,6 +1730,14 @@ Internet-Draft            TE Common YANG Types             November 2024
          reference
            "RFC 6790: The Use of Entropy Labels in MPLS Forwarding
             RFC 7570: Label Switched Path (LSP) Attribute in the
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 31]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
                       Explicit Route Object (ERO)";
        }
 
@@ -1717,7 +1766,7 @@ Internet-Draft            TE Common YANG Types             November 2024
        identity srlg-collection-desired {
          base lsp-attributes-flags;
          description
-           "SRLG collection desired.";
+           "Shared Risk Link Group (SRLG) collection desired.";
          reference
            "RFC 7570: Label Switched Path (LSP) Attribute in the
                       Explicit Route Object (ERO)
@@ -1729,20 +1778,21 @@ Internet-Draft            TE Common YANG Types             November 2024
          base lsp-attributes-flags;
          description
            "This flag indicates that a particular node on the LSP is
-            required to enter loopback mode.  This can also be
+            required to enter loopback mode.
 
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 31]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
-            used to specify the loopback state of the node.";
+            This can also be used to specify the loopback state of the
+            node.";
          reference
            "RFC 7571: GMPLS RSVP-TE Extensions for Lock Instruct and
                       Loopback";
        }
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 32]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
 
        identity p2mp-te-tree-eval-request {
          base lsp-attributes-flags;
@@ -1787,18 +1837,19 @@ Internet-Draft            TE Common YANG Types             November 2024
                       Recovery";
        }
 
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 32]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
        identity link-protection-shared {
          base link-protection-type;
          description
            "Shared protected link type.";
          reference
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 33]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
            "RFC 4872: RSVP-TE Extensions in Support of End-to-End
                       Generalized Multi-Protocol Label Switching (GMPLS)
                       Recovery";
@@ -1842,19 +1893,18 @@ Internet-Draft            TE Common YANG Types             November 2024
            "Association type for recovery, used to associate LSPs of the
             same tunnel for recovery.";
          reference
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 33]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
            "RFC 4872: RSVP-TE Extensions in Support of End-to-End
                       Generalized Multi-Protocol Label Switching (GMPLS)
                       Recovery
             RFC 6780: RSVP ASSOCIATION Object Extensions";
        }
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 34]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
 
        identity association-type-resource-sharing {
          base association-type;
@@ -1898,20 +1948,20 @@ Internet-Draft            TE Common YANG Types             November 2024
          reference
            "RFC 8800: Path Computation Element Communication Protocol
                       (PCEP) Extension for Label Switched Path (LSP)
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 34]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
                       Diversity Constraint Signaling";
        }
 
      identity objective-function-type {
        description
          "Base identity for path objective function types.";
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 35]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
      }
 
        identity of-minimize-cost-path {
@@ -1954,20 +2004,19 @@ Internet-Draft            TE Common YANG Types             November 2024
 
             This identity has been obsoleted: the
             'svec-of-minimize-agg-bandwidth-consumption' identity SHOULD
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 35]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
             be used instead.";
          reference
            "RFC 5541: Encoding of Objective Functions in the Path
                       Computation Element Communication Protocol
                       (PCEP)";
        }
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 36]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
 
        identity of-minimize-load-most-loaded-link {
          base objective-function-type;
@@ -2010,14 +2059,6 @@ Internet-Draft            TE Common YANG Types             November 2024
          description
            "Indicates a constrained-path LSP in which the
             path is computed by the local LER.";
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 36]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
          reference
            "RFC 9522: Overview and Principles of Internet Traffic
                       Engineering, Section 4.4";
@@ -2025,14 +2066,23 @@ Internet-Draft            TE Common YANG Types             November 2024
 
        identity path-externally-queried {
          base path-computation-method;
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 37]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
          description
            "Constrained-path LSP in which the path is obtained by
             querying an external source, such as a PCE server.
             In the case that an LSP is defined to be externally queried,
             it may also have associated explicit definitions (provided
-            to the external source to aid computation).  The path that
-            is returned by the external source may require further local
-            computation on the device.";
+            to the external source to aid computation).
+
+            The path that is returned by the external source may
+            require further local computation on the device.";
          reference
            "RFC 9522: Overview and Principles of Internet Traffic
                       Engineering
@@ -2066,20 +2116,20 @@ Internet-Draft            TE Common YANG Types             November 2024
          reference
            "RFC 4657: Path Computation Element (PCE) Communication
                       Protocol Generic Requirements";
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 37]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
        }
 
        identity lsp-metric-absolute {
          base lsp-metric-type;
          description
            "The metric specified for the LSPs to which this identity
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 38]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
             refers is specified as an absolute value.";
          reference
            "RFC 4657: Path Computation Element (PCE) Communication
@@ -2122,20 +2172,20 @@ Internet-Draft            TE Common YANG Types             November 2024
        }
 
      identity tunnel-action-type {
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 38]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
        description
          "Base identity from which specific tunnel action types
           are derived.";
      }
 
        identity tunnel-action-resetup {
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 39]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
          base tunnel-action-type;
          description
            "TE tunnel action that tears down the tunnel's current LSP
@@ -2178,20 +2228,19 @@ Internet-Draft            TE Common YANG Types             November 2024
          base te-action-result;
          description
            "TE action is in progress.";
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 39]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
        }
 
      identity tunnel-admin-state-type {
        description
          "Base identity for TE tunnel administrative states.";
      }
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 40]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
 
        identity tunnel-admin-state-up {
          base tunnel-admin-state-type;
@@ -2234,14 +2283,6 @@ Internet-Draft            TE Common YANG Types             November 2024
      identity lsp-state-type {
        description
          "Base identity for TE LSP states.";
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 40]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
      }
 
        identity lsp-path-computing {
@@ -2249,6 +2290,13 @@ Internet-Draft            TE Common YANG Types             November 2024
          description
            "State path computation is in progress.";
        }
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 41]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
 
        identity lsp-path-computation-ok {
          base lsp-state-type;
@@ -2290,14 +2338,6 @@ Internet-Draft            TE Common YANG Types             November 2024
          base lsp-state-type;
          description
            "State is being torn down.";
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 41]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
        }
 
        identity lsp-state-down {
@@ -2305,6 +2345,14 @@ Internet-Draft            TE Common YANG Types             November 2024
          description
            "State is down.";
        }
+
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 42]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
 
      identity path-invalidation-action-type {
        description
@@ -2347,19 +2395,20 @@ Internet-Draft            TE Common YANG Types             November 2024
            "Any LSP affected by a failure is restored.";
        }
 
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 42]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
        identity lsp-restoration-restore-all {
          base lsp-restoration-type;
          description
            "Affected LSPs are restored after all LSPs of the tunnel are
             broken.";
        }
+
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 43]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
 
      identity restoration-scheme-type {
        description
@@ -2402,20 +2451,20 @@ Internet-Draft            TE Common YANG Types             November 2024
        identity restoration-scheme-presignaled {
          base restoration-scheme-type;
          description
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 43]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
            "Restoration LSP is presignaled prior to the failure.";
          reference
            "RFC 4872: RSVP-TE Extensions in Support of End-to-End
                      Generalized Multi-Protocol Label Switching (GMPLS)
                      Recovery";
        }
+
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 44]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
 
      identity lsp-protection-type {
        description
@@ -2458,14 +2507,6 @@ Internet-Draft            TE Common YANG Types             November 2024
            "'Rerouting without Extra-Traffic' LSP protection type.
 
             This identity has been obsoleted: the
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 44]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
             'restoration-scheme-rerouting' identity SHOULD be used
             instead.";
          reference
@@ -2473,6 +2514,13 @@ Internet-Draft            TE Common YANG Types             November 2024
                       Generalized Multi-Protocol Label Switching (GMPLS)
                       Recovery";
        }
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 45]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
 
        identity lsp-protection-1-for-n {
          base lsp-protection-type;
@@ -2514,14 +2562,6 @@ Internet-Draft            TE Common YANG Types             November 2024
                       Recovery";
        }
 
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 45]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
        identity lsp-protection-extra-traffic {
          base lsp-protection-type;
          description
@@ -2530,6 +2570,14 @@ Internet-Draft            TE Common YANG Types             November 2024
            "RFC 4872: RSVP-TE Extensions in Support of End-to-End
                       Generalized Multi-Protocol Label Switching (GMPLS)
                       Recovery";
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 46]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
        }
 
      identity lsp-protection-state {
@@ -2570,14 +2618,6 @@ Internet-Draft            TE Common YANG Types             November 2024
             RFC 4427: Recovery (Protection and Restoration) Terminology
                       for Generalized Multi-Protocol Label Switching
                       (GMPLS)";
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 46]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
        }
 
        identity forced-switch {
@@ -2586,6 +2626,14 @@ Internet-Draft            TE Common YANG Types             November 2024
            "A forced switchover command is active.";
          reference
            "RFC 6378: MPLS Transport Profile (MPLS-TP) Linear Protection
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 47]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
             RFC 4427: Recovery (Protection and Restoration) Terminology
                       for Generalized Multi-Protocol Label Switching
                       (GMPLS)";
@@ -2626,14 +2674,6 @@ Internet-Draft            TE Common YANG Types             November 2024
                       (GMPLS)";
        }
 
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 47]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
        identity wait-to-restore {
          base lsp-protection-state;
          description
@@ -2642,6 +2682,14 @@ Internet-Draft            TE Common YANG Types             November 2024
            "RFC 6378: MPLS Transport Profile (MPLS-TP) Linear Protection
             RFC 4427: Recovery (Protection and Restoration) Terminology
                       for Generalized Multi-Protocol Label Switching
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 48]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
                       (GMPLS)";
        }
 
@@ -2682,14 +2730,6 @@ Internet-Draft            TE Common YANG Types             November 2024
          base protection-external-commands;
          description
            "A temporary configuration action initiated by an operator
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 48]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
             command that prevents any switchover action from being taken
             and, as such, freezes the current state.";
          reference
@@ -2698,6 +2738,14 @@ Internet-Draft            TE Common YANG Types             November 2024
                       Synchronous Digital Hierarchy, Optical Transport
                       Network, and Ethernet Transport Network Operators
             RFC 4427: Recovery (Protection and Restoration) Terminology
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 49]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
                       for Generalized Multi-Protocol Label Switching
                       (GMPLS)";
        }
@@ -2738,14 +2786,6 @@ Internet-Draft            TE Common YANG Types             November 2024
             normal state.";
          reference
            "RFC 4872: RSVP-TE Extensions in Support of End-to-End
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 49]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
                       Generalized Multi-Protocol Label Switching (GMPLS)
                       Recovery
             RFC 4427: Recovery (Protection and Restoration) Terminology
@@ -2754,6 +2794,14 @@ Internet-Draft            TE Common YANG Types             November 2024
        }
 
        identity action-lockout-of-protection {
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 50]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
          base protection-external-commands;
          description
            "A temporary configuration action initiated by an operator
@@ -2794,14 +2842,6 @@ Internet-Draft            TE Common YANG Types             November 2024
             or the null signal to the protection transport entity,
             unless a fault condition exists on other transport entities
             or a switchover command of equal or higher priority is in
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 50]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
             effect.";
          reference
            "RFC 4872: RSVP-TE Extensions in Support of End-to-End
@@ -2810,6 +2850,14 @@ Internet-Draft            TE Common YANG Types             November 2024
             RFC 4427: Recovery (Protection and Restoration) Terminology
                      for Generalized Multi-Protocol Label Switching
                      (GMPLS)";
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 51]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
        }
 
        identity action-exercise {
@@ -2817,8 +2865,9 @@ Internet-Draft            TE Common YANG Types             November 2024
          description
            "An action that starts testing whether or not Automatic
            Protection Switching (APS) communication is operating
-           correctly.  It is of lower priority than any
-           other state or command.";
+           correctly.
+
+           It is of lower priority than any other state or command.";
          reference
            "RFC 7271: MPLS Transport Profile (MPLS-TP) Linear Protection
                       to Match the Operational Expectations of
@@ -2850,14 +2899,6 @@ Internet-Draft            TE Common YANG Types             November 2024
                     Signaling Functional Description";
      }
 
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 51]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
        identity switching-psc1 {
          base switching-capabilities;
          description
@@ -2865,6 +2906,14 @@ Internet-Draft            TE Common YANG Types             November 2024
          reference
            "RFC 3471: Generalized Multi-Protocol Label Switching (GMPLS)
                       Signaling Functional Description";
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 52]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
        }
 
        identity switching-evpl {
@@ -2906,14 +2955,6 @@ Internet-Draft            TE Common YANG Types             November 2024
        }
 
        identity switching-dcsc {
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 52]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
          base switching-capabilities;
          description
            "Data Channel Switching Capable (DCSC).";
@@ -2921,6 +2962,14 @@ Internet-Draft            TE Common YANG Types             November 2024
            "RFC 6002: Generalized MPLS (GMPLS) Data Channel
                       Switching Capable (DCSC) and Channel Set Label
                       Extensions";
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 53]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
        }
 
        identity switching-lsc {
@@ -2962,14 +3011,6 @@ Internet-Draft            TE Common YANG Types             November 2024
          base lsp-encoding-types;
          description
            "Ethernet LSP encoding.";
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 53]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
          reference
            "RFC 3471: Generalized Multi-Protocol Label Switching (GMPLS)
                       Signaling Functional Description";
@@ -2977,6 +3018,14 @@ Internet-Draft            TE Common YANG Types             November 2024
 
        identity lsp-encoding-pdh {
          base lsp-encoding-types;
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 54]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
          description
            "ANSI/ETSI PDH LSP encoding.";
          reference
@@ -3018,14 +3067,6 @@ Internet-Draft            TE Common YANG Types             November 2024
          reference
            "RFC 3471: Generalized Multi-Protocol Label Switching (GMPLS)
                       Signaling Functional Description";
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 54]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
        }
 
        identity lsp-encoding-fiber-channel {
@@ -3033,6 +3074,14 @@ Internet-Draft            TE Common YANG Types             November 2024
          description
            "FiberChannel LSP encoding.";
          reference
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 55]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
            "RFC 3471: Generalized Multi-Protocol Label Switching (GMPLS)
                       Signaling Functional Description";
        }
@@ -3074,14 +3123,6 @@ Internet-Draft            TE Common YANG Types             November 2024
      }
 
        identity path-setup-static {
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 55]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
          base path-signaling-type;
          description
            "Static LSP provisioning path setup.";
@@ -3089,6 +3130,14 @@ Internet-Draft            TE Common YANG Types             November 2024
 
        identity path-setup-rsvp {
          base path-signaling-type;
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 56]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
          description
            "RSVP-TE signaling path setup.";
          reference
@@ -3130,14 +3179,6 @@ Internet-Draft            TE Common YANG Types             November 2024
 
        identity route-include-object {
          base route-usage-type;
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 56]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
          description
            "'Include route' object.";
        }
@@ -3145,6 +3186,14 @@ Internet-Draft            TE Common YANG Types             November 2024
        identity route-exclude-object {
          base route-usage-type;
          description
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 57]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
            "'Exclude route' object.";
          reference
            "RFC 4874: Exclude Routes - Extension to Resource ReserVation
@@ -3154,7 +3203,7 @@ Internet-Draft            TE Common YANG Types             November 2024
        identity route-exclude-srlg {
          base route-usage-type;
          description
-           "Excludes SRLGs.";
+           "Excludes Shared Risk Link Groups (SRLGs).";
          reference
            "RFC 4874: Exclude Routes - Extension to Resource ReserVation
                       Protocol-Traffic Engineering (RSVP-TE)";
@@ -3186,14 +3235,6 @@ Internet-Draft            TE Common YANG Types             November 2024
          identity link-metric-te {
            base link-metric-type;
            description
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 57]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
              "Traffic Engineering (TE) Link Metric.";
            reference
              "RFC 3630: Traffic Engineering (TE) Extensions to OSPF
@@ -3201,6 +3242,13 @@ Internet-Draft            TE Common YANG Types             November 2024
               RFC 5305: IS-IS Extensions for Traffic Engineering,
                         Section 3.7";
          }
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 58]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
 
          identity link-metric-igp {
            base link-metric-type;
@@ -3242,14 +3290,6 @@ Internet-Draft            TE Common YANG Types             November 2024
              "Maximum unidirectional Link Delay, measured in units of
               microseconds.";
            reference
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 58]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
              "RFC 7471: OSPF Traffic Engineering (TE) Metric
                         Extensions, Section 4.2
               RFC 8570: IS-IS Traffic Engineering (TE) Metric
@@ -3258,6 +3298,14 @@ Internet-Draft            TE Common YANG Types             November 2024
 
          identity link-metric-residual-bandwidth {
            base link-metric-type;
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 59]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
            description
              "Unidirectional Residual Bandwidth, measured in units of
               bytes per second.
@@ -3298,14 +3346,6 @@ Internet-Draft            TE Common YANG Types             November 2024
 
          identity path-metric-hop {
            base path-metric-type;
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 59]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
            description
              "Hop Count Path Metric.";
            reference
@@ -3314,6 +3354,14 @@ Internet-Draft            TE Common YANG Types             November 2024
          }
 
          identity path-metric-delay-average {
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 60]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
            base path-metric-type;
            description
              "The Path Delay Metric, measured in units of
@@ -3354,14 +3402,6 @@ Internet-Draft            TE Common YANG Types             November 2024
 
        identity path-metric-optimize-includes {
          base path-metric-optimization-type;
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 60]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
          description
            "A metric that optimizes the number of included resources
             specified in a set.";
@@ -3370,6 +3410,14 @@ Internet-Draft            TE Common YANG Types             November 2024
        identity path-metric-optimize-excludes {
          base path-metric-optimization-type;
          description
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 61]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
            "A metric that optimizes to a maximum the number of excluded
             resources specified in a set.";
        }
@@ -3410,14 +3458,6 @@ Internet-Draft            TE Common YANG Types             November 2024
        identity resource-aff-include-all {
          base resource-affinities-type;
          description
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 61]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
            "The set of attribute filters associated with a
             tunnel, all of which must be present for a link
             to be acceptable.";
@@ -3425,6 +3465,14 @@ Internet-Draft            TE Common YANG Types             November 2024
            "RFC 3209: RSVP-TE: Extensions to RSVP for LSP Tunnels
             RFC 2702: Requirements for Traffic Engineering Over MPLS";
        }
+
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 62]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
 
        identity resource-aff-include-any {
          base resource-affinities-type;
@@ -3466,14 +3514,6 @@ Internet-Draft            TE Common YANG Types             November 2024
          description
            "Optimized on cost.";
          reference
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 62]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
            "RFC 5541: Encoding of Objective Functions in the Path
                        Computation Element Communication Protocol
                        (PCEP)";
@@ -3482,6 +3522,14 @@ Internet-Draft            TE Common YANG Types             November 2024
        identity delay {
          base te-optimization-criterion;
          description
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 63]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
            "Optimized on delay.";
          reference
            "RFC 5541: Encoding of Objective Functions in the Path
@@ -3491,31 +3539,36 @@ Internet-Draft            TE Common YANG Types             November 2024
 
      identity path-computation-srlg-type {
        description
-         "Base identity for SRLG path computation.";
+         "Base identity for Shared Risk Link Group (SRLG) path
+         computation.";
      }
 
        identity srlg-ignore {
          base path-computation-srlg-type;
          description
-           "Ignores SRLGs in the path computation.";
+           "Ignores Shared Risk Link Groups (SRLGs) in the path
+           computation.";
        }
 
        identity srlg-strict {
          base path-computation-srlg-type;
          description
-           "Includes a strict SRLG check in the path computation.";
+           "Includes a strict Shared Risk Link Group (SRLG) check in
+           the path computation.";
        }
 
        identity srlg-preferred {
          base path-computation-srlg-type;
          description
-           "Includes a preferred SRLG check in the path computation.";
+           "Includes a preferred Shared Risk Link Group (SRLG) check in
+           the path computation.";
        }
 
        identity srlg-weighted {
          base path-computation-srlg-type;
          description
-           "Includes a weighted SRLG check in the path computation.";
+           "Includes a weighted Shared Risk Link Group (SRLG) check in
+           the path computation.";
        }
 
      identity path-computation-error-reason {
@@ -3523,15 +3576,16 @@ Internet-Draft            TE Common YANG Types             November 2024
          "Base identity for path computation error reasons.";
      }
 
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 63]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
        identity path-computation-error-path-not-found {
          base path-computation-error-reason;
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 64]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
          description
            "Path computation has failed because of an unspecified
             reason.";
@@ -3578,16 +3632,15 @@ Internet-Draft            TE Common YANG Types             November 2024
                       Protocol (PCEP)
 
             https://www.iana.org/assignments/pcep
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 64]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
             /pcep.xhtml#no-path-vector-tlv";
        }
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 65]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
 
        identity path-computation-error-no-inclusion-hop {
          base path-computation-error-reason;
@@ -3634,17 +3687,17 @@ Internet-Draft            TE Common YANG Types             November 2024
          base path-computation-error-no-dependent-server;
          description
            "Path computation has failed because child PCE is not
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 65]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
             responsive.
 
             It corresponds to bit 21 of the Flags field of the
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 66]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
             NO-PATH-VECTOR TLV.";
          reference
            "RFC 8685: Path Computation Element Communication Protocol
@@ -3690,17 +3743,17 @@ Internet-Draft            TE Common YANG Types             November 2024
             /pcep.xhtml#no-path-vector-tlv";
        }
 
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 66]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
        identity path-computation-error-no-gco-migration {
          base path-computation-error-reason;
          description
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 67]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
            "Path computation has failed because of no Global Concurrent
             Optimization (GCO) migration path found.
 
@@ -3736,7 +3789,7 @@ Internet-Draft            TE Common YANG Types             November 2024
          base path-computation-error-reason;
          description
            "Path computation has failed because of Path-Key Subobject
-            (PKS)  expansion failure.
+            (PKS) expansion failure.
 
             It corresponds to bit 27 of the Flags field of the
             NO-PATH-VECTOR TLV.";
@@ -3746,16 +3799,16 @@ Internet-Draft            TE Common YANG Types             November 2024
                       Path-Key-Based Mechanism
 
             https://www.iana.org/assignments/pcep
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 67]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
             /pcep.xhtml#no-path-vector-tlv";
        }
+
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 68]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
 
        identity path-computation-error-brpc-chain-unavailable {
          base path-computation-error-no-dependent-server;
@@ -3803,15 +3856,16 @@ Internet-Draft            TE Common YANG Types             November 2024
            "RFC 5440: Path Computation Element (PCE) Communication
            Protocol (PCEP);
 
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 68]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
             https://www.iana.org/assignments/pcep
             /pcep.xhtml#no-path-vector-tlv";
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 69]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
        }
 
        identity path-computation-error-no-server {
@@ -3858,16 +3912,16 @@ Internet-Draft            TE Common YANG Types             November 2024
        }
 
      identity svec-objective-function-type {
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 69]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
        description
          "Base identity for SVEC objective function type.";
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 70]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
        reference
          "RFC 5541: Encoding of Objective Functions in the Path
                     Computation Element Communication Protocol (PCEP)";
@@ -3914,16 +3968,15 @@ Internet-Draft            TE Common YANG Types             November 2024
          reference
            "RFC 8685: Path Computation Element Communication Protocol
                       (PCEP) Extensions for the Hierarchical Path
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 70]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
                       Computation Element (H-PCE) Architecture.";
        }
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 71]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
 
        identity svec-of-minimize-shared-link {
          base svec-objective-function-type;
@@ -3970,17 +4023,17 @@ Internet-Draft            TE Common YANG Types             November 2024
          base svec-metric-type;
          description
            "Cumulative TE cost.";
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 71]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
          reference
            "RFC 5541: Encoding of Objective Functions in the Path
                       Computation Element Communication Protocol
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 72]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
                       (PCEP)";
        }
 
@@ -4026,28 +4079,34 @@ Internet-Draft            TE Common YANG Types             November 2024
 
      /**
       * TE bandwidth groupings
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 72]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
       **/
 
      grouping te-bandwidth {
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 73]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
        description
          "This grouping defines the generic TE bandwidth.
+
           For some known data-plane technologies, specific modeling
-          structures are specified.  The string-encoded 'te-bandwidth'
-          type is used for unspecified technologies.
+          structures are specified.
+
+          The string-encoded 'te-bandwidth' type is used for
+          unspecified technologies.
+
           The modeling structure can be augmented later for other
           technologies.";
        container te-bandwidth {
          description
-           "Container that specifies TE bandwidth.  The choices
-            can be augmented for specific data-plane technologies.";
+           "Container that specifies TE bandwidth.
+
+            The choices can be augmented for specific data-plane
+            technologies.";
          choice technology {
            default "generic";
            description
@@ -4070,26 +4129,30 @@ Internet-Draft            TE Common YANG Types             November 2024
      grouping te-label {
        description
          "This grouping defines the generic TE label.
+
           The modeling structure can be augmented for each technology.
+
           For unspecified technologies, 'rt-types:generalized-label'
           is used.";
        container te-label {
          description
-           "Container that specifies the TE label.  The choices can
-            be augmented for specific data-plane technologies.";
+           "Container that specifies the TE label.
+
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 74]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
+            The choices can be augmented for specific data-plane
+            technologies.";
          choice technology {
            default "generic";
            description
              "Data-plane technology type.";
            case generic {
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 73]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
              leaf generic {
                type rt-types:generalized-label;
                description
@@ -4131,20 +4194,23 @@ Internet-Draft            TE Common YANG Types             November 2024
          leaf topology-id {
            type te-topology-id;
            default "";
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 75]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
            description
              "When the datastore contains several topologies,
-              'topology-id' distinguishes between them.  If omitted,
-              the default (empty) string for this leaf is assumed.";
+              'topology-id' distinguishes between them.
+
+              If omitted, the default (empty) string for this leaf is
+              assumed.";
          }
        }
      }
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 74]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
 
      /**
       * TE performance metrics groupings
@@ -4153,9 +4219,10 @@ Internet-Draft            TE Common YANG Types             November 2024
      grouping performance-metrics-one-way-delay-loss {
        description
          "Performance Metrics (PM) information in real time that can
-          be applicable to links or connections.  PM defined in this
-          grouping are applicable to generic TE PM as well as packet TE
-          PM.";
+          be applicable to links or connections.
+
+          PM defined in this grouping are applicable to generic TE PM
+          as well as packet TE PM.";
        reference
          "RFC 7471: OSPF Traffic Engineering (TE) Metric Extensions
           RFC 8570: IS-IS Traffic Engineering (TE) Metric Extensions
@@ -4166,8 +4233,9 @@ Internet-Draft            TE Common YANG Types             November 2024
          type uint32 {
            range "0..16777215";
          }
+         units "microseconds";
          description
-           "One-way delay or latency in microseconds.";
+           "One-way delay or latency.";
        }
        leaf one-way-delay-normality {
          type te-types:performance-metrics-normality;
@@ -4179,8 +4247,18 @@ Internet-Draft            TE Common YANG Types             November 2024
      grouping performance-metrics-two-way-delay-loss {
        description
          "PM information in real time that can be applicable to links or
-          connections.  PM defined in this grouping are applicable to
-          generic TE PM as well as packet TE PM.";
+          connections.
+
+          PM defined in this grouping are applicable to generic TE PM
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 76]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
+          as well as packet TE PM.";
        reference
          "RFC 7471: OSPF Traffic Engineering (TE) Metric Extensions
           RFC 8570: IS-IS Traffic Engineering (TE) Metric Extensions
@@ -4191,17 +4269,10 @@ Internet-Draft            TE Common YANG Types             November 2024
          type uint32 {
            range "0..16777215";
          }
+         units "microseconds";
          description
-           "Two-way delay or latency in microseconds.";
+           "Two-way delay or latency.";
        }
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 75]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
        leaf two-way-delay-normality {
          type te-types:performance-metrics-normality;
          description
@@ -4212,6 +4283,7 @@ Internet-Draft            TE Common YANG Types             November 2024
      grouping performance-metrics-one-way-bandwidth {
        description
          "PM information in real time that can be applicable to links.
+
           PM defined in this grouping are applicable to generic TE PM
           as well as packet TE PM.";
        reference
@@ -4234,6 +4306,14 @@ Internet-Draft            TE Common YANG Types             November 2024
        }
        leaf one-way-residual-bandwidth-normality {
          type te-types:performance-metrics-normality;
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 77]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
          default "normal";
          description
            "Residual bandwidth normality.";
@@ -4245,19 +4325,12 @@ Internet-Draft            TE Common YANG Types             November 2024
          description
            "Available bandwidth that is defined to be residual
             bandwidth minus the measured bandwidth used for the
-            actual forwarding of non-RSVP-TE LSP packets.  For a
-            bundled link, available bandwidth is defined to be the
-            sum of the component link available bandwidths.";
+            actual forwarding of non-RSVP-TE LSP packets.
+
+            For a bundled link, available bandwidth is defined to be
+            the sum of the component link available bandwidths.";
        }
        leaf one-way-available-bandwidth-normality {
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 76]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
          type te-types:performance-metrics-normality;
          default "normal";
          description
@@ -4288,9 +4361,18 @@ Internet-Draft            TE Common YANG Types             November 2024
          type uint32 {
            range "0..16777215";
          }
+         units "microseconds";
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 78]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
          default "0";
          description
-           "One-way delay or latency in microseconds.";
+           "One-way delay or latency.";
        }
        leaf one-way-residual-bandwidth {
          type rt-types:bandwidth-ieee-float32;
@@ -4306,22 +4388,15 @@ Internet-Draft            TE Common YANG Types             November 2024
        }
        leaf one-way-available-bandwidth {
          type rt-types:bandwidth-ieee-float32;
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 77]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
          units "bytes per second";
          default "0x0p0";
          description
            "Available bandwidth that is defined to be residual
             bandwidth minus the measured bandwidth used for the
-            actual forwarding of non-RSVP-TE LSP packets.  For a
-            bundled link, available bandwidth is defined to be the
-            sum of the component link available bandwidths.";
+            actual forwarding of non-RSVP-TE LSP packets.
+
+            For a bundled link, available bandwidth is defined to be
+            the sum of the component link available bandwidths.";
        }
        leaf one-way-utilized-bandwidth {
          type rt-types:bandwidth-ieee-float32;
@@ -4342,9 +4417,18 @@ Internet-Draft            TE Common YANG Types             November 2024
          type uint32 {
            range "0..16777215";
          }
+         units "microseconds";
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 79]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
          default "0";
          description
-           "Two-way delay or latency in microseconds.";
+           "Two-way delay or latency.";
        }
      }
 
@@ -4362,14 +4446,6 @@ Internet-Draft            TE Common YANG Types             November 2024
        container performance-metrics-one-way {
          description
            "One-way link performance information in real time.";
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 78]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
          reference
            "RFC 7471: OSPF Traffic Engineering (TE) Metric Extensions
             RFC 8570: IS-IS Traffic Engineering (TE) Metric Extensions
@@ -4398,6 +4474,14 @@ Internet-Draft            TE Common YANG Types             November 2024
                        + "'measure-interval'.";
            description
              "Constraint on 'suppression-interval' and
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 80]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
               'measure-interval'.";
          }
          description
@@ -4418,34 +4502,27 @@ Internet-Draft            TE Common YANG Types             November 2024
          }
          leaf measure-interval {
            type uint32;
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 79]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
+           units "seconds";
            default "30";
            description
-             "Interval, in seconds, to measure the extended metric
-              values.";
+             "Interval to measure the extended metric values.";
          }
          leaf advertisement-interval {
            type uint32;
+           units "seconds";
            default "0";
            description
-             "Interval, in seconds, to advertise the extended metric
-              values.";
+             "Interval to advertise the extended metric values.";
          }
          leaf suppression-interval {
            type uint32 {
              range "1..max";
            }
+           units "seconds";
            default "120";
            description
-             "Interval, in seconds, to suppress advertisement of the
-              extended metric values.";
+             "Interval to suppress advertisement of the extended metric
+             values.";
            reference
              "RFC 8570: IS-IS Traffic Engineering (TE) Metric
                         Extensions, Section 6";
@@ -4453,6 +4530,14 @@ Internet-Draft            TE Common YANG Types             November 2024
          container threshold-out {
            uses performance-metrics-thresholds;
            description
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 81]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
              "If the measured parameter falls outside an upper bound
               for all but the minimum-delay metric (or a lower bound
               for the minimum-delay metric only) and the advertised
@@ -4474,14 +4559,6 @@ Internet-Draft            TE Common YANG Types             November 2024
               the current measured value exceeds this threshold, an
               'anomalous' announcement (anomalous bit set) will be
               triggered.";
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 80]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
            uses performance-metrics-thresholds;
          }
        }
@@ -4509,6 +4586,14 @@ Internet-Draft            TE Common YANG Types             November 2024
                  "The identifier of a node in the topology.";
              }
              leaf node-id {
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 82]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
                type te-node-id;
                description
                  "The identifier of a node in the TE topology.";
@@ -4530,14 +4615,6 @@ Internet-Draft            TE Common YANG Types             November 2024
            }
          }
          case numbered-link-hop {
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 81]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
            container numbered-link-hop {
              leaf link-tp-id {
                type te-tp-id;
@@ -4565,6 +4642,14 @@ Internet-Draft            TE Common YANG Types             November 2024
                 RFC 3477: Signalling Unnumbered Links in Resource
                           ReSerVation Protocol - Traffic Engineering
                           (RSVP-TE)";
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 83]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
            }
          }
          case unnumbered-link-hop {
@@ -4584,17 +4669,10 @@ Internet-Draft            TE Common YANG Types             November 2024
              leaf link-tp-id {
                type te-tp-id;
                description
-                 "TE LTP identifier.  The combination of the TE link ID
-                  and the TE node ID is used to identify an unnumbered
+                 "TE LTP identifier.
 
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 82]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
-                  TE link.";
+                  The combination of the TE link ID and the TE node ID
+                  is used to identify an unnumbered TE link.";
              }
              leaf node-id-uri {
                type nw:node-id;
@@ -4620,6 +4698,14 @@ Internet-Draft            TE Common YANG Types             November 2024
              }
              description
                "Unnumbered link explicit route hop.";
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 84]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
              reference
                "RFC 3209: RSVP-TE: Extensions to RSVP for LSP Tunnels,
                           Section 4.3, EXPLICIT_ROUTE in RSVP-TE
@@ -4642,14 +4728,6 @@ Internet-Draft            TE Common YANG Types             November 2024
                description
                  "Strict or loose hop.";
              }
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 83]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
              description
                "AS explicit route hop.";
            }
@@ -4666,15 +4744,53 @@ Internet-Draft            TE Common YANG Types             November 2024
        }
      }
 
+     grouping explicit-route-hop-with-srlg {
+       description
+         "Augments the explicit route entry grouping with Shared Risk
+         Link Group (SRLG) hop type.";
+       uses explicit-route-hop {
+         augment "type" {
+           case srlg {
+             container srlg {
+               description
+                 "Shared Risk Link Group (SRLG) container.";
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 85]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
+               leaf srlg {
+                 type uint32;
+                 description
+                   "Shared Risk Link Group (SRLG) value.";
+               }
+             }
+             description
+               "An Shared Risk Link Group (SRLG) value to be
+               included or excluded.";
+           }
+           description
+             "Augmentation for a generic explicit route for Shared
+             Risk Link Group (SRLG) exclusion.";
+         }
+       }
+     }
+
      grouping record-route-state {
        description
          "The Record Route grouping.";
        leaf index {
          type uint32;
          description
-           "Record Route hop index.  The index is used to
-            identify an entry in the list.  The order of entries
-            is defined by the user without relying on key values.";
+           "Record Route hop index.
+
+            The index is used to identify an entry in the list.
+
+            The order of entries is defined by the user without relying
+            on key values.";
        }
        choice type {
          description
@@ -4694,18 +4810,18 @@ Internet-Draft            TE Common YANG Types             November 2024
              }
              leaf node-id {
                type te-node-id;
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 86]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
                description
                  "The identifier of a node in the TE topology.";
              }
              leaf-list flags {
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 84]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
                type path-attribute-flags;
                description
                  "Path attributes flags.";
@@ -4750,18 +4866,18 @@ Internet-Draft            TE Common YANG Types             November 2024
              must "(link-tp-id-uri or link-tp-id) and " +
                  "(node-id-uri or node-id)" {
                description
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 87]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
                  "At least one node identifier and at least one Link
                   Termination Point (LTP) identifier need to be
                   present.";
              }
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 85]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
              leaf link-tp-id-uri {
                type nt:tp-id;
                description
@@ -4770,9 +4886,10 @@ Internet-Draft            TE Common YANG Types             November 2024
              leaf link-tp-id {
                type te-tp-id;
                description
-                 "TE LTP identifier.  The combination of the TE link ID
-                  and the TE node ID is used to identify an unnumbered
-                  TE link.";
+                 "TE LTP identifier.
+
+                  The combination of the TE link ID and the TE node ID
+                  is used to identify an unnumbered TE link.";
              }
              leaf node-id-uri {
                type nw:node-id;
@@ -4805,19 +4922,19 @@ Internet-Draft            TE Common YANG Types             November 2024
            description
              "Unnumbered link route hop.";
          }
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 88]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
          case label {
            container label-hop {
              description
                "Label route hop type.";
              uses te-label;
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 86]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
              leaf-list flags {
                type path-attribute-flags;
                description
@@ -4861,19 +4978,19 @@ Internet-Draft            TE Common YANG Types             November 2024
        }
        container label-start {
          must "(not(../label-end/te-label/direction) and"
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 89]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
             + " not(te-label/direction))"
             + " or "
             + "(../label-end/te-label/direction = te-label/direction)"
             + " or "
             + "(not(te-label/direction) and"
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 87]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
             + " (../label-end/te-label/direction = 'forward'))"
             + " or "
             + "(not(../label-end/te-label/direction) and"
@@ -4910,11 +5027,21 @@ Internet-Draft            TE Common YANG Types             November 2024
          description
            "The step increment between labels in the label range.
             The label start/end values will have to be consistent
-            with the sign of label step.  For example,
-            'label-start' < 'label-end' enforces 'label-step' > 0
-            'label-start' > 'label-end' enforces 'label-step' < 0.";
+            with the sign of label step.
+
+            For example:
+               'label-start' < 'label-end' enforces 'label-step' > 0
+               'label-start' > 'label-end' enforces 'label-step' < 0.";
          choice technology {
            default "generic";
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 90]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
            description
              "Data-plane technology type.";
            case generic {
@@ -4922,14 +5049,6 @@ Internet-Draft            TE Common YANG Types             November 2024
                type int32;
                default "1";
                description
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 88]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
                  "Label range step.";
              }
            }
@@ -4940,8 +5059,9 @@ Internet-Draft            TE Common YANG Types             November 2024
          description
            "When there are gaps between 'label-start' and 'label-end',
             this attribute is used to specify the positions
-            of the used labels.  This is represented in big endian as
-            'hex-string'.
+            of the used labels.
+
+            This is represented in big endian as 'hex-string'.
 
             In case the restriction is 'inclusive', the bit-position is
             set if the corresponding mapped label is available.
@@ -4954,20 +5074,30 @@ Internet-Draft            TE Common YANG Types             November 2024
             labels in the range are not available.
 
             The most significant byte in the hex-string is the farthest
-            to the left in the byte sequence.  Leading zero bytes in the
-            configured value may be omitted for brevity.
+            to the left in the byte sequence.
+
+            Leading zero bytes in the configured value may be omitted
+            for brevity.
+
             Each bit position in the 'range-bitmap' 'hex-string' maps
             to a label in the range derived from 'label-start'.
 
             For example, assuming that 'label-start' = 16000 and
             'range-bitmap' = 0x01000001, then:
-
             - bit position (0) is set, and the corresponding mapped
               label from the range is 16000 + (0 * 'label-step') or
               16000 for default 'label-step' = 1.
             - bit position (24) is set, and the corresponding mapped
               label from the range is 16000 + (24 * 'label-step') or
               16024 for default 'label-step' = 1.";
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 91]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
        }
      }
 
@@ -4978,14 +5108,6 @@ Internet-Draft            TE Common YANG Types             November 2024
        container label-restrictions {
          description
            "The label restrictions container.";
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 89]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
          list label-restriction {
            key "index";
            description
@@ -5024,6 +5146,14 @@ Internet-Draft            TE Common YANG Types             November 2024
            "Container for the 'exclude route' object list.";
          uses path-route-exclude-objects;
        }
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 92]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
        container explicit-route-include-objects {
          when "../metric-type = "
             + "'te-types:path-metric-optimize-includes'";
@@ -5034,14 +5164,6 @@ Internet-Draft            TE Common YANG Types             November 2024
      }
 
      grouping common-constraints {
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 90]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
        description
          "Common constraints grouping that can be set on
           a constraint set or directly on the tunnel.";
@@ -5080,6 +5202,14 @@ Internet-Draft            TE Common YANG Types             November 2024
          description
            "TE LSP requested hold priority.";
          reference
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 93]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
            "RFC 3209: RSVP-TE: Extensions to RSVP for LSP Tunnels";
        }
        leaf signaling-type {
@@ -5090,14 +5220,6 @@ Internet-Draft            TE Common YANG Types             November 2024
          description
            "TE tunnel path signaling type.";
        }
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 91]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
      }
 
      grouping tunnel-constraints {
@@ -5129,10 +5251,21 @@ Internet-Draft            TE Common YANG Types             November 2024
            leaf index {
              type uint32;
              description
-               "Explicit Route Object index.  The index is used to
-                identify an entry in the list.  The order of entries
-                is defined by the user without relying on key values.";
+               "Explicit Route Object index.
+
+                The index is used to identify an entry in the list.
+
+                The order of entries is defined by the user without
+                relying on key values.";
            }
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 94]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
            uses explicit-route-hop;
          }
          list route-object-include-exclude {
@@ -5146,45 +5279,23 @@ Internet-Draft            TE Common YANG Types             November 2024
                base route-usage-type;
              }
              default "te-types:route-include-object";
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 92]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
              description
                "Indicates whether to include or exclude the
-                route object.  The default is to include it.";
+                route object.
+
+                The default is to include it.";
            }
            leaf index {
              type uint32;
              description
-               "Route object include-exclude index.  The index is used
-                to identify an entry in the list.  The order of entries
-                is defined by the user without relying on key values.";
+               "Route object include-exclude index.
+
+                The index is used to identify an entry in the list.
+
+                The order of entries is defined by the user without
+                relying on key values.";
            }
-           uses explicit-route-hop {
-             augment "type" {
-               case srlg {
-                 container srlg {
-                   description
-                     "SRLG container.";
-                   leaf srlg {
-                     type uint32;
-                     description
-                       "SRLG value.";
-                   }
-                 }
-                 description
-                   "An SRLG value to be included or excluded.";
-               }
-               description
-                 "Augmentation for a generic explicit route for SRLG
-                  exclusion.";
-             }
-           }
+           uses explicit-route-hop-with-srlg;
          }
        }
      }
@@ -5202,17 +5313,19 @@ Internet-Draft            TE Common YANG Types             November 2024
          leaf index {
            type uint32;
            description
+             "Route object entry index.
 
 
 
-Busi, et al.               Expires 19 May 2025                 [Page 93]
+Busi, et al.              Expires 14 July 2025                 [Page 95]
 
-Internet-Draft            TE Common YANG Types             November 2024
+Internet-Draft            TE Common YANG Types              January 2025
 
 
-             "Route object entry index.  The index is used to
-              identify an entry in the list.  The order of entries
-              is defined by the user without relying on key values.";
+                The index is used to identify an entry in the list.
+
+                The order of entries is defined by the user without
+                relying on key values.";
          }
          uses explicit-route-hop;
        }
@@ -5231,40 +5344,16 @@ Internet-Draft            TE Common YANG Types             November 2024
          leaf index {
            type uint32;
            description
-             "Route object entry index.  The index is used to
-              identify an entry in the list.  The order of entries
-              is defined by the user without relying on key values.";
+             "Route object entry index.
+
+                The index is used to identify an entry in the list.
+
+                The order of entries is defined by the user without
+                relying on key values.";
          }
-         uses explicit-route-hop {
-           augment "type" {
-             case srlg {
-               container srlg {
-                 description
-                   "SRLG container.";
-                 leaf srlg {
-                   type uint32;
-                   description
-                     "SRLG value.";
-                 }
-               }
-               description
-                 "An SRLG value to be included or excluded.";
-             }
-             description
-               "Augmentation for a generic explicit route for SRLG
-                exclusion.";
-           }
-         }
+         uses explicit-route-hop-with-srlg;
        }
      }
-
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 94]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
 
      grouping generic-path-metric-bounds {
        description
@@ -5280,6 +5369,14 @@ Internet-Draft            TE Common YANG Types             November 2024
 
               TE paths which have at least one path metric which
               exceeds the specified bounds MUST NOT be selected.
+
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 96]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
 
               TE paths that traverse TE links which have at least one
               link metric which exceeds the specified bounds MUST NOT
@@ -5299,7 +5396,7 @@ Internet-Draft            TE Common YANG Types             November 2024
                "Upper bound on the specified 'metric-type'.
 
                 A zero indicates an unbounded upper limit for the
-                specificied 'metric-type'.
+                specified 'metric-type'.
 
                 The unit of is interpreted in the context of the
                 'metric-type' identity.";
@@ -5314,14 +5411,6 @@ Internet-Draft            TE Common YANG Types             November 2024
        container optimizations {
          description
            "The objective function container that includes
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 95]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
             attributes to impose when computing a TE path.";
          choice algorithm {
            description
@@ -5337,6 +5426,14 @@ Internet-Draft            TE Common YANG Types             November 2024
              }
              /* Tiebreakers */
              container tiebreakers {
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 97]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
                status deprecated;
                description
                  "Container for the list of tiebreakers.
@@ -5370,14 +5467,6 @@ Internet-Draft            TE Common YANG Types             November 2024
                   attributes to impose when computing a TE path.";
                leaf objective-function-type {
                  type identityref {
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 96]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
                    base objective-function-type;
                  }
                  default "te-types:of-minimize-cost-path";
@@ -5393,6 +5482,14 @@ Internet-Draft            TE Common YANG Types             November 2024
            base path-tiebreaker-type;
          }
          default "te-types:path-tiebreaker-random";
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 98]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
          description
            "The tiebreaker criteria to apply on an equally favored set
             of paths, in order to pick the best.";
@@ -5421,19 +5518,13 @@ Internet-Draft            TE Common YANG Types             November 2024
              type admin-groups;
              default "";
              description
-               "The affinity value.  The default is empty.";
+               "The affinity value.
+
+                The default is empty.";
            }
          }
        }
        container path-affinity-names {
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 97]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
          description
            "Path affinities represented as names.";
          list path-affinity-name {
@@ -5447,6 +5538,14 @@ Internet-Draft            TE Common YANG Types             November 2024
              description
                "Identifies an entry in the list of named affinity
                 constraints.";
+
+
+
+Busi, et al.              Expires 14 July 2025                 [Page 99]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
            }
            list affinity-name {
              key "name";
@@ -5464,56 +5563,59 @@ Internet-Draft            TE Common YANG Types             November 2024
 
      grouping generic-path-srlgs {
        description
-         "Path SRLG grouping.";
+         "Path Shared Risk Link Group (SRLG) grouping.";
        container path-srlgs-lists {
          description
-           "Path SRLG properties container.";
+           "Path Shared Risk Link Group (SRLG) properties container.";
          list path-srlgs-list {
            key "usage";
            description
-             "List of SRLG values to be included or excluded.";
+             "List of Shared Risk Link Group (SRLG) values to be
+             included or excluded.";
            leaf usage {
              type identityref {
                base route-usage-type;
              }
              description
-               "Identifies an entry in a list of SRLGs to either
-                include or exclude.";
+               "Identifies an entry in a list of Shared Risk Link Groups
+               (SRLGs) to either include or exclude.";
            }
            leaf-list values {
              type srlg;
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 98]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
              description
-               "List of SRLG values.";
+               "List of Shared Risk Link Group (SRLG) values.";
            }
          }
        }
        container path-srlgs-names {
          description
-           "Container for the list of named SRLGs.";
+           "Container for the list of named Shared Risk Link Groups
+           (SRLGs).";
          list path-srlgs-name {
            key "usage";
            description
-             "List of named SRLGs to be included or excluded.";
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 100]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
+             "List of named Shared Risk Link Groups (SRLGs) to be
+             included or excluded.";
            leaf usage {
              type identityref {
                base route-usage-type;
              }
              description
-               "Identifies an entry in a list of named SRLGs to either
-                include or exclude.";
+               "Identifies an entry in a list of named Shared Risk Link
+               Groups (SRLGs) to either include or exclude.";
            }
            leaf-list names {
              type string;
              description
-               "List of named SRLGs.";
+               "List of named Shared Risk Link Groups (SRLGs).";
            }
          }
        }
@@ -5527,9 +5629,10 @@ Internet-Draft            TE Common YANG Types             November 2024
          description
            "The type of resource disjointness.
             When configured for a primary path, the disjointness level
-            applies to all secondary LSPs.  When configured for a
-            secondary path, the disjointness level overrides the level
-            configured for the primary path.";
+            applies to all secondary LSPs.
+
+            When configured for a secondary path, the disjointness
+            level overrides the level configured for the primary path.";
        }
      }
 
@@ -5538,14 +5641,6 @@ Internet-Draft            TE Common YANG Types             November 2024
          "Common path constraints configuration grouping.";
        uses common-constraints;
        uses generic-path-metric-bounds;
-
-
-
-Busi, et al.               Expires 19 May 2025                 [Page 99]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
        uses generic-path-affinities;
        uses generic-path-srlgs;
      }
@@ -5555,6 +5650,14 @@ Internet-Draft            TE Common YANG Types             November 2024
          "Global named path constraints configuration grouping.";
        container path-constraints {
          description
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 101]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
            "TE named path constraints container.";
          uses common-path-constraints-attributes;
          uses generic-path-disjointness;
@@ -5594,24 +5697,25 @@ Internet-Draft            TE Common YANG Types             November 2024
            list path-route-object {
              key "index";
              ordered-by user;
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 100]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
              description
                "List of route objects either returned by the computation
                 engine or actually used by an LSP.";
              leaf index {
                type uint32;
                description
-                 "Route object entry index.  The index is used to
-                  identify an entry in the list.  The order of entries
-                  is defined by the user without relying on key
-                  values.";
+                 "Route object entry index.
+
+                  The index is used to identify an entry in the list.
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 102]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
+                  The order of entries is defined by the user without
+                  relying on key values.";
              }
              uses explicit-route-hop;
            }
@@ -5650,14 +5754,6 @@ Internet-Draft            TE Common YANG Types             November 2024
          "A reusable grouping for a TE generic node identifier.";
        leaf id {
          type union {
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 101]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
            type te-node-id;
            type inet:ip-address;
            type nw:node-id;
@@ -5666,6 +5762,14 @@ Internet-Draft            TE Common YANG Types             November 2024
            "The identifier of the node.
 
             It can be represented as IP address or dotted quad address
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 103]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
             or as an URI.
 
             The type data node disambiguates the union type.";
@@ -5699,21 +5803,13 @@ Internet-Draft            TE Common YANG Types             November 2024
    The "ietf-te-packet-types" module imports from the "ietf-te-types"
    module defined in Section 4 of this document.
 
-   <CODE BEGINS> file "ietf-te-packet-types@2024-10-30.yang"
+   <CODE BEGINS> file "ietf-te-packet-types@2024-11-28.yang"
    module ietf-te-packet-types {
      yang-version 1.1;
      namespace "urn:ietf:params:xml:ns:yang:ietf-te-packet-types";
      prefix te-packet-types;
 
      import ietf-yang-types {
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 102]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
        prefix yang;
        reference
          "RFC 6991: Common YANG Data Types";
@@ -5722,6 +5818,14 @@ Internet-Draft            TE Common YANG Types             November 2024
      import ietf-te-types {
        prefix te-types;
        reference
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 104]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
          "RFC XXXX: Common YANG Data Types for Traffic Engineering";
      }
      // RFC Editor: replace XXXX with actual RFC number
@@ -5750,7 +5854,7 @@ Internet-Draft            TE Common YANG Types             November 2024
                   <mailto:i_bryskin@yahoo.com>";
      description
        "This YANG module contains a collection of generally useful YANG
-        data type definitions specific to Packet Traffic Enginnering
+        data type definitions specific to Packet Traffic Engineering
         (TE).
 
         The model fully conforms to the Network Management Datastore
@@ -5762,15 +5866,7 @@ Internet-Draft            TE Common YANG Types             November 2024
         described in BCP 14 (RFC 2119) (RFC 8174) when, and only when,
         they appear in all capitals, as shown here.
 
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 103]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
-        Copyright (c) 2024 IETF Trust and the persons identified as
+        Copyright (c) 2025 IETF Trust and the persons identified as
         authors of the code.  All rights reserved.
 
         Redistribution and use in source and binary forms, with or
@@ -5778,12 +5874,20 @@ Internet-Draft            TE Common YANG Types             November 2024
         the license terms contained in, the Revised BSD License set
         forth in Section 4.c of the IETF Trust's Legal Provisions
         Relating to IETF Documents
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 105]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
         (https://trustee.ietf.org/license-info).
 
         This version of this YANG module is part of RFC XXXX
         (https://www.rfc-editor.org/info/rfcXXXX); see the RFC itself
         for full legal notices.";
-     revision 2024-10-30 {
+     revision 2025-01-09 {
        description
          "This revision adds the following new identities:
           - bandwidth-profile-type;
@@ -5818,14 +5922,6 @@ Internet-Draft            TE Common YANG Types             November 2024
      identity bandwidth-profile-type {
        description
          "Bandwidth Profile Types";
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 104]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
      }
 
        identity mef-10 {
@@ -5834,6 +5930,14 @@ Internet-Draft            TE Common YANG Types             November 2024
            "MEF 10 Bandwidth Profile";
          reference
            "MEF 10.3: Ethernet Services Attributes Phase 3";
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 106]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
        }
 
        identity rfc-2697 {
@@ -5874,14 +5978,6 @@ Internet-Draft            TE Common YANG Types             November 2024
          reference
            "RFC 7471: OSPF Traffic Engineering (TE) Metric Extensions,
                       Section 4.4
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 105]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
             RFC 8570: IS-IS Traffic Engineering (TE) Metric Extensions,
                       Section 4.4";
        }
@@ -5890,6 +5986,14 @@ Internet-Draft            TE Common YANG Types             November 2024
 
        identity path-metric-delay-variation {
          base te-types:path-metric-type;
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 107]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
          description
            "The Path Delay Variation Metric,
             measured in units of microseconds.";
@@ -5930,14 +6034,6 @@ Internet-Draft            TE Common YANG Types             November 2024
              "Bandwidth is automatically computed.";
          }
        }
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 106]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
        description
          "Enumerated type for specifying whether bandwidth is
           explicitly specified or automatically computed.";
@@ -5946,11 +6042,20 @@ Internet-Draft            TE Common YANG Types             November 2024
      typedef te-class-type {
        type uint8;
        description
-         "Diffserv-TE Class-Type.  Defines a set of Traffic Trunks
-          crossing a link that is governed by a specific set of
-          bandwidth constraints.  Class-Type is used for the purposes
-          of link bandwidth allocation, constraint-based routing, and
-          admission control.";
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 108]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
+         "Diffserv-TE Class-Type.
+          Defines a set of Traffic Trunks crossing a link that is
+          governed by a specific set of bandwidth constraints.
+
+          Class-Type is used for the purposes of link bandwidth
+          allocation, constraint-based routing, and admission control.";
        reference
          "RFC 4124: Protocol Extensions for Support of Diffserv-aware
                     MPLS Traffic Engineering";
@@ -5986,20 +6091,20 @@ Internet-Draft            TE Common YANG Types             November 2024
        units "Gbps";
        description
          "Bandwidth values, expressed in gigabits per second.";
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 107]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
      }
 
      identity backup-protection-type {
        description
          "Base identity for the backup protection type.";
      }
+
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 109]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
 
      identity backup-protection-link {
        base backup-protection-type;
@@ -6042,14 +6147,6 @@ Internet-Draft            TE Common YANG Types             November 2024
 
      identity bc-model-mar {
        base bc-model-type;
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 108]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
        description
          "Maximum Allocation with Reservation Bandwidth Constraints
           Model type.";
@@ -6057,6 +6154,14 @@ Internet-Draft            TE Common YANG Types             November 2024
          "RFC 4126: Max Allocation with Reservation Bandwidth
                     Constraints Model for Diffserv-aware MPLS Traffic
                     Engineering & Performance Comparisons";
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 110]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
      }
 
      /*
@@ -6072,8 +6177,9 @@ Internet-Draft            TE Common YANG Types             November 2024
              type uint32 {
                range "0..16777215";
              }
+             units "microseconds";
              description
-               "One-way minimum delay or latency in microseconds.";
+               "One-way minimum delay or latency.";
            }
            leaf one-way-min-delay-normality {
              type te-types:performance-metrics-normality;
@@ -6085,8 +6191,9 @@ Internet-Draft            TE Common YANG Types             November 2024
              type uint32 {
                range "0..16777215";
              }
+             units "microseconds";
              description
-               "One-way maximum delay or latency in microseconds.";
+               "One-way maximum delay or latency.";
            }
            leaf one-way-max-delay-normality {
              type te-types:performance-metrics-normality;
@@ -6098,18 +6205,19 @@ Internet-Draft            TE Common YANG Types             November 2024
              type uint32 {
                range "0..16777215";
              }
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 109]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
+             units "microseconds";
              description
-               "One-way delay variation in microseconds.";
+               "One-way delay variation.";
              reference
                "RFC 5481: Packet Delay Variation Applicability
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 111]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
                           Statement, Section 4.2";
            }
            leaf one-way-delay-variation-normality {
@@ -6131,10 +6239,13 @@ Internet-Draft            TE Common YANG Types             November 2024
                fraction-digits 6;
                range "0..50.331642";
              }
+             units "%";
              description
                "One-way packet loss as a percentage of the total traffic
-                sent over a configurable interval.  The finest precision
-                is 0.000003%, where the maximum is 50.331642%.";
+                sent over a configurable interval.
+
+                The finest precision is 0.000003%, where the maximum is
+                50.331642%.";
              reference
                "RFC 8570: IS-IS Traffic Engineering (TE) Metric
                           Extensions, Section 4.4";
@@ -6154,15 +6265,15 @@ Internet-Draft            TE Common YANG Types             November 2024
                           Using TE Metric Extensions";
            }
            description
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 110]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
              "PM one-way packet-specific augmentation for a generic PM
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 112]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
               grouping.";
          }
          augment "performance-metrics-two-way" {
@@ -6170,9 +6281,10 @@ Internet-Draft            TE Common YANG Types             November 2024
              type uint32 {
                range "0..16777215";
              }
+             units "microseconds";
              default "0";
              description
-               "Two-way minimum delay or latency in microseconds.";
+               "Two-way minimum delay or latency.";
            }
            leaf two-way-min-delay-normality {
              type te-types:performance-metrics-normality;
@@ -6192,9 +6304,10 @@ Internet-Draft            TE Common YANG Types             November 2024
              type uint32 {
                range "0..16777215";
              }
+             units "microseconds";
              default "0";
              description
-               "Two-way maximum delay or latency in microseconds.";
+               "Two-way maximum delay or latency.";
            }
            leaf two-way-max-delay-normality {
              type te-types:performance-metrics-normality;
@@ -6209,22 +6322,23 @@ Internet-Draft            TE Common YANG Types             November 2024
                 RFC 7823: Performance-Based Path Selection for
                           Explicitly Routed Label Switched Paths (LSPs)
                           Using TE Metric Extensions";
-           }
 
 
 
-Busi, et al.               Expires 19 May 2025                [Page 111]
+Busi, et al.              Expires 14 July 2025                [Page 113]
 
-Internet-Draft            TE Common YANG Types             November 2024
+Internet-Draft            TE Common YANG Types              January 2025
 
 
+           }
            leaf two-way-delay-variation {
              type uint32 {
                range "0..16777215";
              }
+             units "microseconds";
              default "0";
              description
-               "Two-way delay variation in microseconds.";
+               "Two-way delay variation.";
              reference
                "RFC 5481: Packet Delay Variation Applicability
                           Statement, Section 4.2";
@@ -6248,11 +6362,13 @@ Internet-Draft            TE Common YANG Types             November 2024
                fraction-digits 6;
                range "0..50.331642";
              }
+             units "%";
              default "0";
              description
                "Two-way packet loss as a percentage of the total traffic
-                sent over a configurable interval.  The finest precision
-                is 0.000003%.";
+                sent over a configurable interval.
+
+                The finest precision is 0.000003%.";
            }
            leaf two-way-packet-loss-normality {
              type te-types:performance-metrics-normality;
@@ -6262,18 +6378,18 @@ Internet-Draft            TE Common YANG Types             November 2024
            }
            description
              "PM two-way packet-specific augmentation for a generic PM
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 114]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
               grouping.";
            reference
              "RFC 7471: OSPF Traffic Engineering (TE) Metric Extensions
               RFC 8570: IS-IS Traffic Engineering (TE) Metric Extensions
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 112]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
               RFC 7823: Performance-Based Path Selection for Explicitly
                         Routed Label Switched Paths (LSPs) Using TE
                         Metric Extensions";
@@ -6288,48 +6404,53 @@ Internet-Draft            TE Common YANG Types             November 2024
          type uint32 {
            range "0..16777215";
          }
+         units "microseconds";
          default "0";
          description
-           "One-way minimum delay or latency in microseconds.";
+           "One-way minimum delay or latency.";
        }
        leaf one-way-max-delay {
          type uint32 {
            range "0..16777215";
          }
+         units "microseconds";
          default "0";
          description
-           "One-way maximum delay or latency in microseconds.";
+           "One-way maximum delay or latency.";
        }
        leaf one-way-delay-variation {
          type uint32 {
            range "0..16777215";
          }
+         units "microseconds";
          default "0";
          description
-           "One-way delay variation in microseconds.";
+           "One-way delay variation.";
        }
        leaf one-way-packet-loss {
          type decimal64 {
            fraction-digits 6;
            range "0..50.331642";
          }
+         units "%";
          default "0";
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 115]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
          description
            "One-way packet loss as a percentage of the total traffic
-            sent over a configurable interval.  The finest precision is
-            0.000003%.";
+            sent over a configurable interval.
+
+            The finest precision is 0.000003%.";
        }
      }
 
      grouping one-way-performance-metrics-gauge-packet {
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 113]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
        description
          "One-way packet PM throttle grouping.
 
@@ -6339,21 +6460,24 @@ Internet-Draft            TE Common YANG Types             November 2024
           instead of IGP-TE RFCs.";
        leaf one-way-min-delay {
          type yang:gauge64;
+         units "microseconds";
          description
-           "One-way minimum delay or latency in microseconds.";
+           "One-way minimum delay or latency.";
        }
        leaf one-way-max-delay {
          type yang:gauge64;
+         units "microseconds";
          description
-           "One-way maximum delay or latency in microseconds.";
+           "One-way maximum delay or latency.";
          reference
            "RFC 7679: A One-Way Delay Metric for IP Performance
                       Metrics (IPPM)";
        }
        leaf one-way-delay-variation {
          type yang:gauge64;
+         units "microseconds";
          description
-           "One-way delay variation in microseconds.";
+           "One-way delay variation.";
          reference
            "RFC 3393: IP Packet Delay Variation Metric for IP
                       Performance Metrics (IPPM)";
@@ -6366,6 +6490,14 @@ Internet-Draft            TE Common YANG Types             November 2024
          description
            "The ratio of packets dropped to packets transmitted between
             two endpoints.";
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 116]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
          reference
            "RFC 7680: A One-Way Loss Metric for IP Performance
                       Metrics (IPPM)";
@@ -6378,45 +6510,50 @@ Internet-Draft            TE Common YANG Types             November 2024
        leaf two-way-min-delay {
          type uint32 {
            range "0..16777215";
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 114]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
          }
+         units "microseconds";
          default "0";
          description
-           "Two-way minimum delay or latency in microseconds.";
+           "Two-way minimum delay or latency.";
        }
        leaf two-way-max-delay {
          type uint32 {
            range "0..16777215";
          }
+         units "microseconds";
          default "0";
          description
-           "Two-way maximum delay or latency in microseconds.";
+           "Two-way maximum delay or latency.";
        }
        leaf two-way-delay-variation {
          type uint32 {
            range "0..16777215";
          }
+         units "microseconds";
          default "0";
          description
-           "Two-way delay variation in microseconds.";
+           "Two-way delay variation.";
        }
        leaf two-way-packet-loss {
          type decimal64 {
            fraction-digits 6;
            range "0..50.331642";
          }
+         units "%";
          default "0";
          description
            "Two-way packet loss as a percentage of the total traffic
-            sent over a configurable interval.  The finest precision is
-            0.000003%.";
+            sent over a configurable interval.
+
+            The finest precision is 0.000003%.";
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 117]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
        }
      }
 
@@ -6430,30 +6567,25 @@ Internet-Draft            TE Common YANG Types             November 2024
           instead of IGP-TE RFCs.";
        leaf two-way-min-delay {
          type yang:gauge64;
+         units "microseconds";
          description
-           "Two-way minimum delay or latency in microseconds.";
+           "Two-way minimum delay or latency.";
          reference
            "RFC 2681: A Round-trip Delay Metric for IPPM";
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 115]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
        }
        leaf two-way-max-delay {
          type yang:gauge64;
+         units "microseconds";
          description
-           "Two-way maximum delay or latency in microseconds.";
+           "Two-way maximum delay or latency.";
          reference
            "RFC 2681: A Round-trip Delay Metric for IPPM";
        }
        leaf two-way-delay-variation {
          type yang:gauge64;
+         units "microseconds";
          description
-           "Two-way delay variation in microseconds.";
+           "Two-way delay variation.";
          reference
            "RFC 5481: Packet Delay Variation Applicability Statement";
        }
@@ -6470,6 +6602,14 @@ Internet-Draft            TE Common YANG Types             November 2024
 
      grouping performance-metrics-throttle-container-packet {
        description
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 118]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
          "Packet PM threshold grouping.";
        uses te-types:performance-metrics-throttle-container {
          augment "throttle/threshold-out" {
@@ -6490,14 +6630,6 @@ Internet-Draft            TE Common YANG Types             November 2024
            uses one-way-performance-metrics-packet;
            uses two-way-performance-metrics-packet;
            description
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 116]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
              "PM accelerated advertisement packet augmentation for a
               generic grouping.";
          }
@@ -6526,6 +6658,14 @@ Internet-Draft            TE Common YANG Types             November 2024
          description
            "Excess Information Rate (EIR).";
        }
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 119]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
        leaf ebs {
          type uint64;
          units "bytes";
@@ -6545,14 +6685,6 @@ Internet-Draft            TE Common YANG Types             November 2024
            "Peak Burst Size (PBS).";
        }
      }
-
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 117]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
 
      grouping te-packet-path-bandwidth {
        description
@@ -6582,6 +6714,14 @@ Internet-Draft            TE Common YANG Types             November 2024
                "When the bandwidth profile is explicitly specified.";
            }
            description
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 120]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
              "Set the bandwidth profile attributes explicitly.";
            leaf bandwidth-profile-name {
              type string;
@@ -6602,14 +6742,6 @@ Internet-Draft            TE Common YANG Types             November 2024
            description
              "The Class-Type of traffic transported by the LSP.";
            reference
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 118]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
              "RFC 4124: Protocol Extensions for Support of
                         Diffserv-aware MPLS Traffic Engineering,
                         Section 4.3.1";
@@ -6638,6 +6770,14 @@ Internet-Draft            TE Common YANG Types             November 2024
          type uint64;
          units "bits/second";
          description
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 121]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
            "Bandwidth value for Packet TE links.";
        }
      }
@@ -6658,13 +6798,6 @@ Internet-Draft            TE Common YANG Types             November 2024
          URI: urn:ietf:params:xml:ns:yang:ietf-te-packet-types
          Registrant Contact:  The IESG.
          XML: N/A, the requested URI is an XML namespace.
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 119]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
 
    This document requests IANA to register the following YANG modules in
    the "YANG Module Names" registry [RFC6020] within the "YANG
@@ -6694,6 +6827,13 @@ Internet-Draft            TE Common YANG Types             November 2024
    (e.g., SSH [RFC4252], TLS [RFC8446], and QUIC [RFC9000]) and have to
    use mutual authentication.
 
+
+
+Busi, et al.              Expires 14 July 2025                [Page 122]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
    The Network Configuration Access Control Model (NACM) [RFC8341]
    provides the means to restrict access for particular NETCONF or
    RESTCONF users to a preconfigured subset of all available NETCONF or
@@ -6714,13 +6854,6 @@ Internet-Draft            TE Common YANG Types             November 2024
 8.  References
 
 8.1.  Normative References
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 120]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
 
    [ITU-T_G.709]
               International Telecommunication Union, "Interfaces for the
@@ -6747,6 +6880,16 @@ Internet-Draft            TE Common YANG Types             November 2024
               (RSVP-TE)", RFC 3477, DOI 10.17487/RFC3477, January 2003,
               <https://www.rfc-editor.org/rfc/rfc3477>.
 
+
+
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 123]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
    [RFC3630]  Katz, D., Kompella, K., and D. Yeung, "Traffic Engineering
               (TE) Extensions to OSPF Version 2", RFC 3630,
               DOI 10.17487/RFC3630, September 2003,
@@ -6767,16 +6910,6 @@ Internet-Draft            TE Common YANG Types             November 2024
               Diffserv-aware MPLS Traffic Engineering", RFC 4124,
               DOI 10.17487/RFC4124, June 2005,
               <https://www.rfc-editor.org/rfc/rfc4124>.
-
-
-
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 121]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
 
    [RFC4202]  Kompella, K., Ed. and Y. Rekhter, Ed., "Routing Extensions
               in Support of Generalized Multi-Protocol Label Switching
@@ -6805,6 +6938,14 @@ Internet-Draft            TE Common YANG Types             November 2024
               Recovery", RFC 4872, DOI 10.17487/RFC4872, May 2007,
               <https://www.rfc-editor.org/rfc/rfc4872>.
 
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 124]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
    [RFC4873]  Berger, L., Bryskin, I., Papadimitriou, D., and A. Farrel,
               "GMPLS Segment Recovery", RFC 4873, DOI 10.17487/RFC4873,
               May 2007, <https://www.rfc-editor.org/rfc/rfc4873>.
@@ -6825,14 +6966,6 @@ Internet-Draft            TE Common YANG Types             November 2024
               "Attachment Individual Identifier (AII) Types for
               Aggregation", RFC 5003, DOI 10.17487/RFC5003, September
               2007, <https://www.rfc-editor.org/rfc/rfc5003>.
-
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 122]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
 
    [RFC5150]  Ayyangar, A., Kompella, K., Vasseur, JP., and A. Farrel,
               "Label Switched Path Stitching with Generalized
@@ -6861,6 +6994,14 @@ Internet-Draft            TE Common YANG Types             November 2024
               Engineering (RSVP-TE)", RFC 5420, DOI 10.17487/RFC5420,
               February 2009, <https://www.rfc-editor.org/rfc/rfc5420>.
 
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 125]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
    [RFC5440]  Vasseur, JP., Ed. and JL. Le Roux, Ed., "Path Computation
               Element (PCE) Communication Protocol (PCEP)", RFC 5440,
               DOI 10.17487/RFC5440, March 2009,
@@ -6878,17 +7019,6 @@ Internet-Draft            TE Common YANG Types             November 2024
               Computation Using a Path-Key-Based Mechanism", RFC 5520,
               DOI 10.17487/RFC5520, April 2009,
               <https://www.rfc-editor.org/rfc/rfc5520>.
-
-
-
-
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 123]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
 
    [RFC5541]  Le Roux, JL., Vasseur, JP., and Y. Lee, "Encoding of
               Objective Functions in the Path Computation Element
@@ -6912,6 +7042,21 @@ Internet-Draft            TE Common YANG Types             November 2024
               Extensions for Multi-Layer and Multi-Region Networks (MLN/
               MRN)", RFC 6001, DOI 10.17487/RFC6001, October 2010,
               <https://www.rfc-editor.org/rfc/rfc6001>.
+
+   [RFC6002]  Berger, L. and D. Fedyk, "Generalized MPLS (GMPLS) Data
+              Channel Switching Capable (DCSC) and Channel Set Label
+              Extensions", RFC 6002, DOI 10.17487/RFC6002, October 2010,
+              <https://www.rfc-editor.org/rfc/rfc6002>.
+
+
+
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 126]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
 
    [RFC6004]  Berger, L. and D. Fedyk, "Generalized MPLS (GMPLS) Support
               for Metro Ethernet Forum and G.8011 Ethernet Service
@@ -6938,14 +7083,6 @@ Internet-Draft            TE Common YANG Types             November 2024
               DOI 10.17487/RFC6370, September 2011,
               <https://www.rfc-editor.org/rfc/rfc6370>.
 
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 124]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
    [RFC6378]  Weingarten, Y., Ed., Bryant, S., Osborne, E., Sprecher,
               N., and A. Fulignoli, Ed., "MPLS Transport Profile (MPLS-
               TP) Linear Protection", RFC 6378, DOI 10.17487/RFC6378,
@@ -6966,6 +7103,17 @@ Internet-Draft            TE Common YANG Types             November 2024
               RFC 6790, DOI 10.17487/RFC6790, November 2012,
               <https://www.rfc-editor.org/rfc/rfc6790>.
 
+
+
+
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 127]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
    [RFC6827]  Malis, A., Ed., Lindem, A., Ed., and D. Papadimitriou,
               Ed., "Automatically Switched Optical Network (ASON)
               Routing for OSPFv2 Protocols", RFC 6827,
@@ -6975,6 +7123,17 @@ Internet-Draft            TE Common YANG Types             November 2024
    [RFC6991]  Schoenwaelder, J., Ed., "Common YANG Data Types",
               RFC 6991, DOI 10.17487/RFC6991, July 2013,
               <https://www.rfc-editor.org/rfc/rfc6991>.
+
+   [RFC7074]  Berger, L. and J. Meuric, "Revised Definition of the GMPLS
+              Switching Capability and Type Fields", RFC 7074,
+              DOI 10.17487/RFC7074, November 2013,
+              <https://www.rfc-editor.org/rfc/rfc7074>.
+
+   [RFC7138]  Ceccarelli, D., Ed., Zhang, F., Belotti, S., Rao, R., and
+              J. Drake, "Traffic Engineering Extensions to OSPF for
+              GMPLS Control of Evolving G.709 Optical Transport
+              Networks", RFC 7138, DOI 10.17487/RFC7138, March 2014,
+              <https://www.rfc-editor.org/rfc/rfc7138>.
 
    [RFC7139]  Zhang, F., Ed., Zhang, G., Belotti, S., Ceccarelli, D.,
               and K. Pithewan, "GMPLS Signaling Extensions for Control
@@ -6995,17 +7154,21 @@ Internet-Draft            TE Common YANG Types             November 2024
               Operators", RFC 7271, DOI 10.17487/RFC7271, June 2014,
               <https://www.rfc-editor.org/rfc/rfc7271>.
 
-
-
-Busi, et al.               Expires 19 May 2025                [Page 125]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
    [RFC7308]  Osborne, E., "Extended Administrative Groups in MPLS
               Traffic Engineering (MPLS-TE)", RFC 7308,
               DOI 10.17487/RFC7308, July 2014,
               <https://www.rfc-editor.org/rfc/rfc7308>.
+
+
+
+
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 128]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
 
    [RFC7471]  Giacalone, S., Ward, D., Drake, J., Atlas, A., and S.
               Previdi, "OSPF Traffic Engineering (TE) Metric
@@ -7050,18 +7213,18 @@ Internet-Draft            TE Common YANG Types             November 2024
               Switched Paths (LSPs)", RFC 8149, DOI 10.17487/RFC8149,
               April 2017, <https://www.rfc-editor.org/rfc/rfc8149>.
 
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 126]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
    [RFC8169]  Mirsky, G., Ruffini, S., Gray, E., Drake, J., Bryant, S.,
               and A. Vainshtein, "Residence Time Measurement in MPLS
               Networks", RFC 8169, DOI 10.17487/RFC8169, May 2017,
               <https://www.rfc-editor.org/rfc/rfc8169>.
+
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 129]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
 
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
@@ -7107,17 +7270,17 @@ Internet-Draft            TE Common YANG Types             November 2024
               DOI 10.17487/RFC8685, December 2019,
               <https://www.rfc-editor.org/rfc/rfc8685>.
 
-
-
-Busi, et al.               Expires 19 May 2025                [Page 127]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
    [RFC8776]  Saad, T., Gandhi, R., Liu, X., Beeram, V., and I. Bryskin,
               "Common YANG Data Types for Traffic Engineering",
               RFC 8776, DOI 10.17487/RFC8776, June 2020,
               <https://www.rfc-editor.org/rfc/rfc8776>.
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 130]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
 
    [RFC8800]  Litkowski, S., Sivabalan, S., Barth, C., and M. Negi,
               "Path Computation Element Communication Protocol (PCEP)
@@ -7141,7 +7304,7 @@ Internet-Draft            TE Common YANG Types             November 2024
               rfc8407bis-21>.
 
    [I-D.ietf-pce-sid-algo-14]
-              Sidor, S., Tokar, A., Peng, S., Peng, S., and A. Stone,
+              Sidor, S., Rose, Z., Peng, S., Peng, S., and A. Stone,
               "Carrying SR-Algorithm Information in PCE-based
               Networks.", Work in Progress, Internet-Draft, draft-ietf-
               pce-sid-algo-14, 25 September 2024,
@@ -7161,19 +7324,19 @@ Internet-Draft            TE Common YANG Types             November 2024
               Marker", RFC 2698, DOI 10.17487/RFC2698, September 1999,
               <https://www.rfc-editor.org/rfc/rfc2698>.
 
-
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 128]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
    [RFC2702]  Awduche, D., Malcolm, J., Agogbua, J., O'Dell, M., and J.
               McManus, "Requirements for Traffic Engineering Over MPLS",
               RFC 2702, DOI 10.17487/RFC2702, September 1999,
               <https://www.rfc-editor.org/rfc/rfc2702>.
+
+
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 131]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
 
    [RFC3688]  Mealling, M., "The IETF XML Registry", BCP 81, RFC 3688,
               DOI 10.17487/RFC3688, January 2004,
@@ -7216,20 +7379,20 @@ Internet-Draft            TE Common YANG Types             November 2024
               Path (LSP)", RFC 4736, DOI 10.17487/RFC4736, November
               2006, <https://www.rfc-editor.org/rfc/rfc4736>.
 
-
-
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 129]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
    [RFC6241]  Enns, R., Ed., Bjorklund, M., Ed., Schoenwaelder, J., Ed.,
               and A. Bierman, Ed., "Network Configuration Protocol
               (NETCONF)", RFC 6241, DOI 10.17487/RFC6241, June 2011,
               <https://www.rfc-editor.org/rfc/rfc6241>.
+
+
+
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 132]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
 
    [RFC7823]  Atlas, A., Drake, J., Giacalone, S., and S. Previdi,
               "Performance-Based Path Selection for Explicitly Routed
@@ -7271,17 +7434,6 @@ Appendix A.  The Complete Schema Trees
 
 A.1.  TE Types Schema Tree
 
-
-
-
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 130]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
    =============== NOTE: '\' line wrapping per RFC 8792 ================
 
    module: ietf-te-types
@@ -7290,6 +7442,14 @@ Internet-Draft            TE Common YANG Types             November 2024
        +-- te-bandwidth
           +-- (technology)?
              +--:(generic)
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 133]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
                 +-- generic?   te-bandwidth
      grouping te-label:
        +-- te-label
@@ -7330,14 +7490,6 @@ Internet-Draft            TE Common YANG Types             November 2024
        +-- one-way-available-bandwidth?
        |       rt-types:bandwidth-ieee-float32
        +-- one-way-utilized-bandwidth?
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 131]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
                rt-types:bandwidth-ieee-float32
      grouping two-way-performance-metrics:
        +-- two-way-delay?   uint32
@@ -7346,6 +7498,14 @@ Internet-Draft            TE Common YANG Types             November 2024
        +-- one-way-residual-bandwidth?
        |       rt-types:bandwidth-ieee-float32
        +-- one-way-available-bandwidth?
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 134]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
        |       rt-types:bandwidth-ieee-float32
        +-- one-way-utilized-bandwidth?
        |       rt-types:bandwidth-ieee-float32
@@ -7386,14 +7546,6 @@ Internet-Draft            TE Common YANG Types             November 2024
           |  +-- one-way-utilized-bandwidth?
           |  |       rt-types:bandwidth-ieee-float32
           |  +-- two-way-delay?                 uint32
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 132]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
           +-- threshold-in
           |  +-- one-way-delay?                 uint32
           |  +-- one-way-residual-bandwidth?
@@ -7402,6 +7554,14 @@ Internet-Draft            TE Common YANG Types             November 2024
           |  |       rt-types:bandwidth-ieee-float32
           |  +-- one-way-utilized-bandwidth?
           |  |       rt-types:bandwidth-ieee-float32
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 135]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
           |  +-- two-way-delay?                 uint32
           +-- threshold-accelerated-advertisement
              +-- one-way-delay?                 uint32
@@ -7442,15 +7602,49 @@ Internet-Draft            TE Common YANG Types             November 2024
                    +-- (technology)?
                    |  +--:(generic)
                    |     +-- generic?   rt-types:generalized-label
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 133]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
                    +-- direction?       te-label-direction
+     grouping explicit-route-hop-with-srlg:
+       +-- (type)?
+          +--:(numbered-node-hop)
+          |  +-- numbered-node-hop
+          |     +-- node-id-uri?   nw:node-id
+          |     +-- node-id?       te-node-id
+          |     +-- hop-type?      te-hop-type
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 136]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
+          +--:(numbered-link-hop)
+          |  +-- numbered-link-hop
+          |     +-- link-tp-id    te-tp-id
+          |     +-- hop-type?     te-hop-type
+          |     +-- direction?    te-link-direction
+          +--:(unnumbered-link-hop)
+          |  +-- unnumbered-link-hop
+          |     +-- link-tp-id-uri?   nt:tp-id
+          |     +-- link-tp-id?       te-tp-id
+          |     +-- node-id-uri?      nw:node-id
+          |     +-- node-id?          te-node-id
+          |     +-- hop-type?         te-hop-type
+          |     +-- direction?        te-link-direction
+          +--:(as-number)
+          |  +-- as-number-hop
+          |     +-- as-number    inet:as-number
+          |     +-- hop-type?    te-hop-type
+          +--:(label)
+          |  +-- label-hop
+          |     +-- te-label
+          |        +-- (technology)?
+          |        |  +--:(generic)
+          |        |     +-- generic?   rt-types:generalized-label
+          |        +-- direction?       te-label-direction
+          +--:(srlg)
+             +-- srlg
+                +-- srlg?   uint32
      grouping record-route-state:
        +-- index?                       uint32
        +-- (type)?
@@ -7472,6 +7666,14 @@ Internet-Draft            TE Common YANG Types             November 2024
           |     +-- flags*            path-attribute-flags
           +--:(label)
              +-- label-hop
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 137]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
                 +-- te-label
                 |  +-- (technology)?
                 |  |  +--:(generic)
@@ -7498,14 +7700,6 @@ Internet-Draft            TE Common YANG Types             November 2024
        |     +--:(generic)
        |        +-- generic?   int32
        +-- range-bitmap?   yang:hex-string
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 134]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
      grouping label-set-info:
        +-- label-restrictions
           +-- label-restriction* [index]
@@ -7528,6 +7722,14 @@ Internet-Draft            TE Common YANG Types             November 2024
              |     +--:(generic)
              |        +-- generic?   int32
              +-- range-bitmap?   yang:hex-string
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 138]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
      grouping optimization-metric-entry:
        +-- metric-type?                      identityref
        +-- weight?                           uint8
@@ -7554,14 +7756,6 @@ Internet-Draft            TE Common YANG Types             November 2024
        |        |     +-- hop-type?         te-hop-type
        |        |     +-- direction?        te-link-direction
        |        +--:(as-number)
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 135]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
        |        |  +-- as-number-hop
        |        |     +-- as-number    inet:as-number
        |        |     +-- hop-type?    te-hop-type
@@ -7584,6 +7778,14 @@ Internet-Draft            TE Common YANG Types             November 2024
                 |     +-- node-id-uri?   nw:node-id
                 |     +-- node-id?       te-node-id
                 |     +-- hop-type?      te-hop-type
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 139]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
                 +--:(numbered-link-hop)
                 |  +-- numbered-link-hop
                 |     +-- link-tp-id    te-tp-id
@@ -7610,14 +7812,6 @@ Internet-Draft            TE Common YANG Types             November 2024
                          +-- direction?       te-label-direction
      grouping common-constraints:
        +-- te-bandwidth
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 136]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
        |  +-- (technology)?
        |     +--:(generic)
        |        +-- generic?   te-bandwidth
@@ -7640,6 +7834,14 @@ Internet-Draft            TE Common YANG Types             November 2024
        +-- hold-priority?            uint8
        +-- signaling-type?           identityref
      grouping path-constraints-route-objects:
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 140]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
        +-- explicit-route-objects
           +-- route-object-exclude-always* [index]
           |  +-- index?                       uint32
@@ -7666,14 +7868,6 @@ Internet-Draft            TE Common YANG Types             November 2024
           |     |  +-- as-number-hop
           |     |     +-- as-number    inet:as-number
           |     |     +-- hop-type?    te-hop-type
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 137]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
           |     +--:(label)
           |        +-- label-hop
           |           +-- te-label
@@ -7696,6 +7890,14 @@ Internet-Draft            TE Common YANG Types             November 2024
                 |     +-- hop-type?     te-hop-type
                 |     +-- direction?    te-link-direction
                 +--:(unnumbered-link-hop)
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 141]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
                 |  +-- unnumbered-link-hop
                 |     +-- link-tp-id-uri?   nt:tp-id
                 |     +-- link-tp-id?       te-tp-id
@@ -7722,14 +7924,6 @@ Internet-Draft            TE Common YANG Types             November 2024
           +-- index?                       uint32
           +-- (type)?
              +--:(numbered-node-hop)
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 138]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
              |  +-- numbered-node-hop
              |     +-- node-id-uri?   nw:node-id
              |     +-- node-id?       te-node-id
@@ -7752,6 +7946,14 @@ Internet-Draft            TE Common YANG Types             November 2024
              |     +-- as-number    inet:as-number
              |     +-- hop-type?    te-hop-type
              +--:(label)
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 142]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
                 +-- label-hop
                    +-- te-label
                       +-- (technology)?
@@ -7778,14 +7980,6 @@ Internet-Draft            TE Common YANG Types             November 2024
              |     +-- link-tp-id?       te-tp-id
              |     +-- node-id-uri?      nw:node-id
              |     +-- node-id?          te-node-id
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 139]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
              |     +-- hop-type?         te-hop-type
              |     +-- direction?        te-link-direction
              +--:(as-number)
@@ -7808,6 +8002,14 @@ Internet-Draft            TE Common YANG Types             November 2024
              +-- metric-type?   identityref
              +-- upper-bound?   uint64
      grouping generic-path-optimization:
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 143]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
        +-- optimizations
        |  +-- (algorithm)?
        |     +--:(metric) {path-optimization-metric}?
@@ -7834,14 +8036,6 @@ Internet-Draft            TE Common YANG Types             November 2024
        |     |  |  |        |     +-- link-tp-id?       te-tp-id
        |     |  |  |        |     +-- node-id-uri?      nw:node-id
        |     |  |  |        |     +-- node-id?          te-node-id
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 140]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
        |     |  |  |        |     +-- hop-type?         te-hop-type
        |     |  |  |        |     +-- direction?
        |     |  |  |        |             te-link-direction
@@ -7856,7 +8050,7 @@ Internet-Draft            TE Common YANG Types             November 2024
        |     |  |  |        |        |  +--:(generic)
        |     |  |  |        |        |     +-- generic?
        |     |  |  |        |        |             rt-types:generalized\
-   -label
+                                                                  -label
        |     |  |  |        |        +-- direction?
        |     |  |  |        |                te-label-direction
        |     |  |  |        +--:(srlg)
@@ -7864,6 +8058,14 @@ Internet-Draft            TE Common YANG Types             November 2024
        |     |  |  |              +-- srlg?   uint32
        |     |  |  +-- explicit-route-include-objects
        |     |  |     +-- route-object-include-object* [index]
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 144]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
        |     |  |        +-- index?                       uint32
        |     |  |        +-- (type)?
        |     |  |           +--:(numbered-node-hop)
@@ -7890,21 +8092,13 @@ Internet-Draft            TE Common YANG Types             November 2024
        |     |  |           |     +-- as-number    inet:as-number
        |     |  |           |     +-- hop-type?    te-hop-type
        |     |  |           +--:(label)
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 141]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
        |     |  |              +-- label-hop
        |     |  |                 +-- te-label
        |     |  |                    +-- (technology)?
        |     |  |                    |  +--:(generic)
        |     |  |                    |     +-- generic?
        |     |  |                    |             rt-types:generalized\
-   -label
+                                                                  -label
        |     |  |                    +-- direction?
        |     |  |                            te-label-direction
        |     |  x-- tiebreakers
@@ -7920,6 +8114,14 @@ Internet-Draft            TE Common YANG Types             November 2024
        |  +-- path-affinities-value* [usage]
        |     +-- usage?   identityref
        |     +-- value?   admin-groups
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 145]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
        +-- path-affinity-names
           +-- path-affinity-name* [usage]
              +-- usage?           identityref
@@ -7946,14 +8148,6 @@ Internet-Draft            TE Common YANG Types             November 2024
        +-- hold-priority?            uint8
        +-- signaling-type?           identityref
        +-- path-metric-bounds
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 142]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
        |  +-- path-metric-bound* [metric-type]
        |     +-- metric-type?   identityref
        |     +-- upper-bound?   uint64
@@ -7976,6 +8170,14 @@ Internet-Draft            TE Common YANG Types             November 2024
              +-- names*   string
      grouping generic-path-constraints:
        +-- path-constraints
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 146]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
           +-- te-bandwidth
           |  +-- (technology)?
           |     +--:(generic)
@@ -8002,14 +8204,6 @@ Internet-Draft            TE Common YANG Types             November 2024
           |     +-- usage?    identityref
           |     +-- values*   srlg
           +-- path-srlgs-names
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 143]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
           |  +-- path-srlgs-name* [usage]
           |     +-- usage?   identityref
           |     +-- names*   string
@@ -8032,6 +8226,14 @@ Internet-Draft            TE Common YANG Types             November 2024
           |  +--ro path-srlgs-list* [usage]
           |     +--ro usage?    identityref
           |     +--ro values*   srlg
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 147]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
           +--ro path-srlgs-names
           |  +--ro path-srlgs-name* [usage]
           |     +--ro usage?   identityref
@@ -8058,14 +8260,6 @@ Internet-Draft            TE Common YANG Types             November 2024
                    |     +--ro node-id?          te-node-id
                    |     +--ro hop-type?         te-hop-type
                    |     +--ro direction?        te-link-direction
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 144]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
                    +--:(as-number)
                    |  +--ro as-number-hop
                    |     +--ro as-number    inet:as-number
@@ -8086,6 +8280,15 @@ Internet-Draft            TE Common YANG Types             November 2024
        +-- type?   enumeration
 
 A.2.  Packet TE Types Schema Tree
+
+
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 148]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
 
    module: ietf-te-packet-types
 
@@ -8114,14 +8317,6 @@ A.2.  Packet TE Types Schema Tree
        |  |       te-types:performance-metrics-normality
        |  +-- one-way-delay-variation?                 uint32
        |  +-- one-way-delay-variation-normality?
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 145]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
        |  |       te-types:performance-metrics-normality
        |  +-- one-way-packet-loss?                     decimal64
        |  +-- one-way-packet-loss-normality?
@@ -8143,6 +8338,14 @@ Internet-Draft            TE Common YANG Types             November 2024
           +-- two-way-packet-loss-normality?
                   te-types:performance-metrics-normality
      grouping one-way-performance-metrics-packet:
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 149]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
        +-- one-way-min-delay?         uint32
        +-- one-way-max-delay?         uint32
        +-- one-way-delay-variation?   uint32
@@ -8170,14 +8373,6 @@ Internet-Draft            TE Common YANG Types             November 2024
           +-- suppression-interval?                  uint32
           +-- threshold-out
           |  +-- one-way-delay?                 uint32
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 146]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
           |  +-- one-way-residual-bandwidth?
           |  |       rt-types:bandwidth-ieee-float32
           |  +-- one-way-available-bandwidth?
@@ -8199,6 +8394,14 @@ Internet-Draft            TE Common YANG Types             November 2024
           |  |       rt-types:bandwidth-ieee-float32
           |  +-- one-way-available-bandwidth?
           |  |       rt-types:bandwidth-ieee-float32
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 150]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
           |  +-- one-way-utilized-bandwidth?
           |  |       rt-types:bandwidth-ieee-float32
           |  +-- two-way-delay?                 uint32
@@ -8226,14 +8429,6 @@ Internet-Draft            TE Common YANG Types             November 2024
              +-- two-way-min-delay?             uint32
              +-- two-way-max-delay?             uint32
              +-- two-way-delay-variation?       uint32
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 147]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
              +-- two-way-packet-loss?           decimal64
      grouping bandwidth-profile-parameters:
        +-- cir?   uint64
@@ -8255,6 +8450,14 @@ Internet-Draft            TE Common YANG Types             November 2024
           |  +-- ebs?                      uint64
           |  +-- pir?                      uint64
           |  +-- pbs?                      uint64
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 151]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
           +-- class-type?           te-types:te-ds-class
           +--ro signaled-bandwidth?   te-packet-types:bandwidth-kbps
      grouping te-packet-link-bandwidth:
@@ -8282,14 +8485,6 @@ Appendix B.  Changes from RFC 8776
 
    *  path-metric-optimization-type;
 
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 148]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
    *  link-path-metric-type;
 
    *  link-metric-type and its derived identities;
@@ -8311,6 +8506,15 @@ Internet-Draft            TE Common YANG Types             November 2024
 
    The following new groupings have been added to the 'ietf-te-types'
    module:
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 152]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
+
+   *  explicit-route-hop-with-srlg;
 
    *  encoding-and-switching-type;
 
@@ -8339,13 +8543,6 @@ Internet-Draft            TE Common YANG Types             November 2024
    The following identities, already defined in [RFC8776], have been
    updated in the 'ietf-te-types' module:
 
-
-
-Busi, et al.               Expires 19 May 2025                [Page 149]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
    *  objective-function-type (editorial);
 
    *  action-exercise (bug fix);
@@ -8365,6 +8562,13 @@ Internet-Draft            TE Common YANG Types             November 2024
    *  path-metric-delay-minimum (bug fix);
 
    *  path-metric-residual-bandwidth (bug fix);
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 153]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
 
    *  path-metric-optimize-includes (bug fix);
 
@@ -8394,14 +8598,6 @@ Internet-Draft            TE Common YANG Types             November 2024
       The following leaves, already defined in [RFC8776], have been
       updated in the 'explicit-route-hop':
 
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 150]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
       -  node-id;
 
       -  link-tp-id.
@@ -8422,6 +8618,13 @@ Internet-Draft            TE Common YANG Types             November 2024
       -  node-id-uri;
 
       -  link-tp-id-uri;
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 154]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
 
       The following leaves, already defined in [RFC8776], have been
       updated in the 'explicit-route-hop':
@@ -8450,14 +8653,6 @@ Internet-Draft            TE Common YANG Types             November 2024
 
    *  tunnel-constraints;
 
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 151]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
       The following new leaf have been added to the 'tunnel-constraints'
       grouping:
 
@@ -8479,6 +8674,13 @@ Internet-Draft            TE Common YANG Types             November 2024
 
       The following leaves, already defined in [RFC8776], have been
       updated in the 'optimization-metric-entry':
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 155]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
 
       -  metric-type;
 
@@ -8506,14 +8708,6 @@ Internet-Draft            TE Common YANG Types             November 2024
 
    *  of-minimize-agg-bandwidth-consumption;
 
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 152]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
    *  of-minimize-load-most-loaded-link;
 
    *  of-minimize-cost-path-set;
@@ -8535,6 +8729,14 @@ Acknowledgements
    This document was prepared using kramdown.
 
 Contributors
+
+
+
+
+Busi, et al.              Expires 14 July 2025                [Page 156]
+
+Internet-Draft            TE Common YANG Types              January 2025
+
 
    Vishnu Pavan Beeram
    Juniper Networks
@@ -8563,13 +8765,6 @@ Authors' Addresses
    Email: xufeng.liu.ietf@gmail.com
 
 
-
-
-Busi, et al.               Expires 19 May 2025                [Page 153]
-
-Internet-Draft            TE Common YANG Types             November 2024
-
-
    Tarek Saad
    Cisco Systems Inc.
    Email: tsaad.net@gmail.com
@@ -8594,31 +8789,4 @@ Internet-Draft            TE Common YANG Types             November 2024
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Busi, et al.               Expires 19 May 2025                [Page 154]
+Busi, et al.              Expires 14 July 2025                [Page 157]

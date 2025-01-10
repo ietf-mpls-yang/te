@@ -141,6 +141,40 @@ module: ietf-te-types
                 |  +--:(generic)
                 |     +-- generic?   rt-types:generalized-label
                 +-- direction?       te-label-direction
+  grouping explicit-route-hop-with-srlg:
+    +-- (type)?
+       +--:(numbered-node-hop)
+       |  +-- numbered-node-hop
+       |     +-- node-id-uri?   nw:node-id
+       |     +-- node-id?       te-node-id
+       |     +-- hop-type?      te-hop-type
+       +--:(numbered-link-hop)
+       |  +-- numbered-link-hop
+       |     +-- link-tp-id    te-tp-id
+       |     +-- hop-type?     te-hop-type
+       |     +-- direction?    te-link-direction
+       +--:(unnumbered-link-hop)
+       |  +-- unnumbered-link-hop
+       |     +-- link-tp-id-uri?   nt:tp-id
+       |     +-- link-tp-id?       te-tp-id
+       |     +-- node-id-uri?      nw:node-id
+       |     +-- node-id?          te-node-id
+       |     +-- hop-type?         te-hop-type
+       |     +-- direction?        te-link-direction
+       +--:(as-number)
+       |  +-- as-number-hop
+       |     +-- as-number    inet:as-number
+       |     +-- hop-type?    te-hop-type
+       +--:(label)
+       |  +-- label-hop
+       |     +-- te-label
+       |        +-- (technology)?
+       |        |  +--:(generic)
+       |        |     +-- generic?   rt-types:generalized-label
+       |        +-- direction?       te-label-direction
+       +--:(srlg)
+          +-- srlg
+             +-- srlg?   uint32
   grouping record-route-state:
     +-- index?                       uint32
     +-- (type)?

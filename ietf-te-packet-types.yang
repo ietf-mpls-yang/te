@@ -40,10 +40,10 @@ module ietf-te-packet-types {
                <mailto:i_bryskin@yahoo.com>";
   description
     "This YANG module contains a collection of generally useful YANG
-     data type definitions specific to Packet Traffic Enginnering
+     data type definitions specific to Packet Traffic Engineering
      (TE).
      
-     The model fully conforms to the Network Management Datastore
+     The model conforms to the Network Management Datastore
      Architecture (NMDA).
 
      The key words 'MUST', 'MUST NOT', 'REQUIRED', 'SHALL', 'SHALL
@@ -52,7 +52,7 @@ module ietf-te-packet-types {
      described in BCP 14 (RFC 2119) (RFC 8174) when, and only when,
      they appear in all capitals, as shown here.
 
-     Copyright (c) 2024 IETF Trust and the persons identified as
+     Copyright (c) 2025 IETF Trust and the persons identified as
      authors of the code.  All rights reserved.
 
      Redistribution and use in source and binary forms, with or
@@ -65,7 +65,7 @@ module ietf-te-packet-types {
      This version of this YANG module is part of RFC XXXX
      (https://www.rfc-editor.org/info/rfcXXXX); see the RFC itself
      for full legal notices.";
-  revision 2024-10-30 {
+  revision 2025-01-09 {
     description
       "This revision adds the following new identities:
        - bandwidth-profile-type;
@@ -204,11 +204,12 @@ module ietf-te-packet-types {
   typedef te-class-type {
     type uint8;
     description
-      "Diffserv-TE Class-Type.  Defines a set of Traffic Trunks
-       crossing a link that is governed by a specific set of
-       bandwidth constraints.  Class-Type is used for the purposes
-       of link bandwidth allocation, constraint-based routing, and
-       admission control.";
+      "Diffserv-TE Class-Type.
+       Defines a set of Traffic Trunks crossing a link that is
+       governed by a specific set of bandwidth constraints.
+       
+       Class-Type is used for the purposes of link bandwidth
+       allocation, constraint-based routing, and admission control.";
     reference
       "RFC 4124: Protocol Extensions for Support of Diffserv-aware
                  MPLS Traffic Engineering";
@@ -307,15 +308,16 @@ module ietf-te-packet-types {
 
   grouping performance-metrics-attributes-packet {
     description
-      "Contains PM attributes.";
+      "Contains Performance Metrics (PM) information.";
     uses te-types:performance-metrics-attributes {
       augment "performance-metrics-one-way" {
         leaf one-way-min-delay {
           type uint32 {
             range "0..16777215";
           }
+          units "microseconds";
           description
-            "One-way minimum delay or latency in microseconds.";
+            "One-way minimum delay or latency.";
         }
         leaf one-way-min-delay-normality {
           type te-types:performance-metrics-normality;
@@ -327,8 +329,9 @@ module ietf-te-packet-types {
           type uint32 {
             range "0..16777215";
           }
+          units "microseconds";
           description
-            "One-way maximum delay or latency in microseconds.";
+            "One-way maximum delay or latency.";
         }
         leaf one-way-max-delay-normality {
           type te-types:performance-metrics-normality;
@@ -340,8 +343,9 @@ module ietf-te-packet-types {
           type uint32 {
             range "0..16777215";
           }
+          units "microseconds";
           description
-            "One-way delay variation in microseconds.";
+            "One-way delay variation.";
           reference
             "RFC 5481: Packet Delay Variation Applicability
                        Statement, Section 4.2";
@@ -365,10 +369,12 @@ module ietf-te-packet-types {
             fraction-digits 6;
             range "0..50.331642";
           }
+          units "%";
           description
             "One-way packet loss as a percentage of the total traffic
-             sent over a configurable interval.  The finest precision
-             is 0.000003%, where the maximum is 50.331642%.";
+             sent over a configurable interval.
+             
+             The finest precision is 0.000003%.";
           reference
             "RFC 8570: IS-IS Traffic Engineering (TE) Metric
                        Extensions, Section 4.4";
@@ -388,17 +394,19 @@ module ietf-te-packet-types {
                        Using TE Metric Extensions";
         }
         description
-          "PM one-way packet-specific augmentation for a generic PM
-           grouping.";
+          "Performance Metrics (PM) one-way packet-specific
+           augmentation for a generic PM grouping.";
       }
+
       augment "performance-metrics-two-way" {
         leaf two-way-min-delay {
           type uint32 {
             range "0..16777215";
           }
+          units "microseconds";
           default "0";
           description
-            "Two-way minimum delay or latency in microseconds.";
+            "Two-way minimum delay or latency.";
         }
         leaf two-way-min-delay-normality {
           type te-types:performance-metrics-normality;
@@ -418,9 +426,10 @@ module ietf-te-packet-types {
           type uint32 {
             range "0..16777215";
           }
+          units "microseconds";
           default "0";
           description
-            "Two-way maximum delay or latency in microseconds.";
+            "Two-way maximum delay or latency.";
         }
         leaf two-way-max-delay-normality {
           type te-types:performance-metrics-normality;
@@ -440,9 +449,10 @@ module ietf-te-packet-types {
           type uint32 {
             range "0..16777215";
           }
+          units "microseconds";
           default "0";
           description
-            "Two-way delay variation in microseconds.";
+            "Two-way delay variation.";
           reference
             "RFC 5481: Packet Delay Variation Applicability
                        Statement, Section 4.2";
@@ -466,11 +476,13 @@ module ietf-te-packet-types {
             fraction-digits 6;
             range "0..50.331642";
           }
+          units "%";
           default "0";
           description
             "Two-way packet loss as a percentage of the total traffic
-             sent over a configurable interval.  The finest precision
-             is 0.000003%.";
+             sent over a configurable interval.
+             
+             The finest precision is 0.000003%.";
         }
         leaf two-way-packet-loss-normality {
           type te-types:performance-metrics-normality;
@@ -479,8 +491,8 @@ module ietf-te-packet-types {
             "Two-way packet loss normality.";
         }
         description
-          "PM two-way packet-specific augmentation for a generic PM
-           grouping.";
+          "Performance Metrics (PM) two-way packet-specific
+           augmentation for a generic PM grouping.";
         reference
           "RFC 7471: OSPF Traffic Engineering (TE) Metric Extensions
            RFC 8570: IS-IS Traffic Engineering (TE) Metric Extensions
@@ -493,47 +505,52 @@ module ietf-te-packet-types {
 
   grouping one-way-performance-metrics-packet {
     description
-      "One-way packet PM throttle grouping.";
+      "One-way packet Performance Metrics (PM) throttle grouping.";
     leaf one-way-min-delay {
       type uint32 {
         range "0..16777215";
       }
+      units "microseconds";
       default "0";
       description
-        "One-way minimum delay or latency in microseconds.";
+        "One-way minimum delay or latency.";
     }
     leaf one-way-max-delay {
       type uint32 {
         range "0..16777215";
       }
+      units "microseconds";
       default "0";
       description
-        "One-way maximum delay or latency in microseconds.";
+        "One-way maximum delay or latency.";
     }
     leaf one-way-delay-variation {
       type uint32 {
         range "0..16777215";
       }
+      units "microseconds";
       default "0";
       description
-        "One-way delay variation in microseconds.";
+        "One-way delay variation.";
     }
     leaf one-way-packet-loss {
       type decimal64 {
         fraction-digits 6;
         range "0..50.331642";
       }
+      units "%";
       default "0";
       description
         "One-way packet loss as a percentage of the total traffic
-         sent over a configurable interval.  The finest precision is
-         0.000003%.";
+         sent over a configurable interval.
+         
+         The finest precision is 0.000003%.";
     }
   }
 
   grouping one-way-performance-metrics-gauge-packet {
     description
-      "One-way packet PM throttle grouping.
+      "One-way packet Performance Metrics (PM) throttle grouping.
 
        This grouping is used to report the same metrics defined in
        the one-way-performance-metrics-packet grouping, using gauges
@@ -541,21 +558,24 @@ module ietf-te-packet-types {
        instead of IGP-TE RFCs.";
     leaf one-way-min-delay {
       type yang:gauge64;
+      units "microseconds";
       description
-        "One-way minimum delay or latency in microseconds.";
+        "One-way minimum delay or latency.";
     }
     leaf one-way-max-delay {
       type yang:gauge64;
+      units "microseconds";
       description
-        "One-way maximum delay or latency in microseconds.";
+        "One-way maximum delay or latency.";
       reference
         "RFC 7679: A One-Way Delay Metric for IP Performance
                    Metrics (IPPM)";
     }
     leaf one-way-delay-variation {
       type yang:gauge64;
+      units "microseconds";
       description
-        "One-way delay variation in microseconds.";
+        "One-way delay variation.";
       reference
         "RFC 3393: IP Packet Delay Variation Metric for IP
                    Performance Metrics (IPPM)";
@@ -576,47 +596,52 @@ module ietf-te-packet-types {
 
   grouping two-way-performance-metrics-packet {
     description
-      "Two-way packet PM throttle grouping.";
+      "Two-way packet Performance Metrics (PM) throttle grouping.";
     leaf two-way-min-delay {
       type uint32 {
         range "0..16777215";
       }
+      units "microseconds";
       default "0";
       description
-        "Two-way minimum delay or latency in microseconds.";
+        "Two-way minimum delay or latency.";
     }
     leaf two-way-max-delay {
       type uint32 {
         range "0..16777215";
       }
+      units "microseconds";
       default "0";
       description
-        "Two-way maximum delay or latency in microseconds.";
+        "Two-way maximum delay or latency.";
     }
     leaf two-way-delay-variation {
       type uint32 {
         range "0..16777215";
       }
+      units "microseconds";
       default "0";
       description
-        "Two-way delay variation in microseconds.";
+        "Two-way delay variation.";
     }
     leaf two-way-packet-loss {
       type decimal64 {
         fraction-digits 6;
         range "0..50.331642";
       }
+      units "%";
       default "0";
       description
         "Two-way packet loss as a percentage of the total traffic
-         sent over a configurable interval.  The finest precision is
-         0.000003%.";
+         sent over a configurable interval.
+         
+         The finest precision is 0.000003%.";
     }
   }
 
   grouping two-way-performance-metrics-gauge-packet {
     description
-      "Two-way packet PM throttle grouping.
+      "Two-way packet Performance Metrics (PM) throttle grouping.
 
        This grouping is used to report the same metrics defined in
        the two-way-performance-metrics-packet grouping, using gauges
@@ -624,22 +649,25 @@ module ietf-te-packet-types {
        instead of IGP-TE RFCs.";
     leaf two-way-min-delay {
       type yang:gauge64;
+      units "microseconds";
       description
-        "Two-way minimum delay or latency in microseconds.";
+        "Two-way minimum delay or latency.";
       reference
         "RFC 2681: A Round-trip Delay Metric for IPPM";
     }
     leaf two-way-max-delay {
       type yang:gauge64;
+      units "microseconds";
       description
-        "Two-way maximum delay or latency in microseconds.";
+        "Two-way maximum delay or latency.";
       reference
         "RFC 2681: A Round-trip Delay Metric for IPPM";
     }
     leaf two-way-delay-variation {
       type yang:gauge64;
+      units "microseconds";
       description
-        "Two-way delay variation in microseconds.";
+        "Two-way delay variation.";
       reference
         "RFC 5481: Packet Delay Variation Applicability Statement";
     }
@@ -656,28 +684,28 @@ module ietf-te-packet-types {
 
   grouping performance-metrics-throttle-container-packet {
     description
-      "Packet PM threshold grouping.";
+      "Packet Performance Metrics (PM) threshold grouping.";
     uses te-types:performance-metrics-throttle-container {
       augment "throttle/threshold-out" {
         uses one-way-performance-metrics-packet;
         uses two-way-performance-metrics-packet;
         description
-          "PM threshold-out packet augmentation for a
-           generic grouping.";
+          "Performance Metrics (PM) threshold-out packet
+           augmentation for a generic grouping.";
       }
       augment "throttle/threshold-in" {
         uses one-way-performance-metrics-packet;
         uses two-way-performance-metrics-packet;
         description
-          "PM threshold-in packet augmentation for a
-           generic grouping.";
+          "Performance Metrics (PM) threshold-in packet augmentation
+           for a generic grouping.";
       }
       augment "throttle/threshold-accelerated-advertisement" {
         uses one-way-performance-metrics-packet;
         uses two-way-performance-metrics-packet;
         description
-          "PM accelerated advertisement packet augmentation for a
-           generic grouping.";
+          "Performance Metrics (PM) accelerated advertisement packet
+           augmentation for a generic grouping.";
       }
     }
   }
